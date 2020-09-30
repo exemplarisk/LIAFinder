@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 using LiaFinder.Shared.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LiaFinder.Tables;
+using LiaFinder.Views;
+using System.IO;
 
 namespace LiaFinder.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        Database _database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3"));
         public LoginPage()
         {
             InitializeComponent();
@@ -19,14 +23,23 @@ namespace LiaFinder.Views
 
         void SignInProcedure(object sender, EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text);
-            
-            if(user.CheckInformation())
+           
+            if(Entry_Username.Text != null && Entry_Password.Text != null)
             {
-                DisplayAlert("Login", "Login Successful", "Okay");
+                bool validData = _database.LoginValidate(Entry_Username.Text, Entry_Password.Text);
+                if(validData)
+                {
+                    DisplayAlert("Success", "Logged in as user: " + Entry_Username.Text, "HOME");
+                    Application.Current.MainPage = new MainPage();
+                    
+                }
+                
             }
             else
-            DisplayAlert("Error", "Login not correct, empty username or password","Return");
+            {
+                
+                DisplayAlert("Error", "Login not correct, Wrong username or password", "Return");
+            }
         }
         void RegisterProcedure(object sender, EventArgs e)
         {
