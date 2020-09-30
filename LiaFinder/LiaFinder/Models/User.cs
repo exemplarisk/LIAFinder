@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LiaFinder.Tables;
 
 namespace LiaFinder.Shared.Models
 {
@@ -17,18 +18,11 @@ namespace LiaFinder.Shared.Models
             this.Password = Password;
         }
 
-      /*  public bool CheckInformation()
+        public bool CheckInformation()
         {
-            if (!this.Username.Equals(null) && !this.Password.Equals(null))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return något;
         }
-      */
+      
     }
 }
       

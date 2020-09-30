@@ -31,7 +31,7 @@ namespace LiaFinder.Views
             {
                 var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Yes", "Cancel");
             });
-                
+            App.Current.MainPage = new LoginPage();    
         }
     }
 }

@@ -8,5 +8,7 @@
         <Label x:Name="Lbl_Password"  Text="Password"/>
         <Entry x:Name="Entry_Password"  Placeholder="Password"/>
         <Button x:Name="Btn_Signin" Text="Sign in" Clicked="SignInProcedure"/>
+        <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
+
     </StackLayout>
 </ContentPage>

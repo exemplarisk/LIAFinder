@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using LiaFinder;
+using LiaFinder.Views;
 using Xamarin.Forms;
 
 namespace LiaFinder
@@ -25,7 +25,7 @@ namespace LiaFinder
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

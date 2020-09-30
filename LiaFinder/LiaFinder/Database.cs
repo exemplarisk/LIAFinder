@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LiaFinder.Shared.Models;
 using SQLite;
 
 namespace LiaFinder
@@ -21,5 +22,10 @@ namespace LiaFinder
         {
             return _database.InsertAsync(student);
         }
+        public Task<List<User>> GetUserAsync()
+        {
+            return _database.Table<User>().ToListAsync();
+        }
+
     }
 }

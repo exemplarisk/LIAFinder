@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LiaFinder.Shared.Models;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,6 +27,10 @@ namespace LiaFinder.Views
             }
             else
             DisplayAlert("Error", "Login not correct, empty username or password","Return");
+        }
+        void RegisterProcedure(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new RegistrationPage();
         }
     }
 }
