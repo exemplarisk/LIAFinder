@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using LiaFinder.Shared.Models;
-using Xamarin.Forms;
 using SQLite;
 using LiaFinder.Tables;
-using System.Linq;
 
 namespace LiaFinder
 {

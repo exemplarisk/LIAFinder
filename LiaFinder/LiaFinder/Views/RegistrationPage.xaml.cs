@@ -30,8 +30,14 @@ namespace LiaFinder.Views
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Yes", "Cancel");
+
+                if(result)
+                {
+                    App.Current.MainPage = new NavigationPage(new LoginPage());
+
+                }
             });
-            App.Current.MainPage = new LoginPage();    
+                
         }
     }
 }

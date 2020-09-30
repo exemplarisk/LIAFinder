@@ -2,13 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LoginPage">
-    <StackLayout>
-        <Label x:Name="Lbl_Username"  Text="Username"/>
-        <Entry x:Name="Entry_Username" Placeholder="Username"/>
-        <Label x:Name="Lbl_Password"  Text="Password"/>
-        <Entry x:Name="Entry_Password"  Placeholder="Password"/>
-        <Button x:Name="Btn_Signin" Text="Sign in" Clicked="SignInProcedure"/>
-        <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Entry Placeholder="Username" x:Name="Entry_Username" Grid.Row="0"/>
+                    <Entry Placeholder="Password" x:Name="Entry_Password" IsPassword="True" Grid.Row="1"/>
+                    <Button Text="Login" Grid.Row="2" Clicked="Handle_Clicked_1" BackgroundColor="#0077be" TextColor="White"/>
+                    <Button Text="SignUp" Grid.Row="3" Clicked="Handle_Clicked"/>
 
-    </StackLayout>
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    
+    
+    </ContentPage.Content>
 </ContentPage>
