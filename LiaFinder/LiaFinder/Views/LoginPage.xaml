@@ -18,6 +18,16 @@
 
 
                 </Grid>
+                <ListView x:Name="listView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell 
+                                    Text="{Binding UserName}"
+                              Detail="{Binding Password}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
 
             </StackLayout>
         </ScrollView>

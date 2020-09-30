@@ -18,6 +18,12 @@ namespace LiaFinder.Views
             InitializeComponent();
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            listView.ItemsSource = await App.Database.GetRegUserTableAsync();
+        }
+
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
             App.Current.MainPage = new NavigationPage(new RegistrationPage());
@@ -29,6 +35,8 @@ namespace LiaFinder.Views
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
             var myQuery = db.Table<RegUserTable>().Where(u => u.UserName.Equals(Entry_Username.Text) && u.Password.Equals(Entry_Password.Text)).FirstOrDefault();
+
+           
 
             if(myQuery != null)
             {
