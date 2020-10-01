@@ -13,5 +13,11 @@ namespace LiaFinder.Tables
         public int CompanyinternSpots { get; set; }
 
 
+       public Guid Id = Guid.NewGuid();
+
+ 
+
+       
     }
+
 }

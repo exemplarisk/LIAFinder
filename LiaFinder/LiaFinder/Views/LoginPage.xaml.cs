@@ -4,6 +4,9 @@ using Xamarin.Forms.Xaml;
 using LiaFinder.Tables;
 using System.IO;
 using SQLite;
+using LiaFinder.Views;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LiaFinder.Views
 {
@@ -11,6 +14,9 @@ namespace LiaFinder.Views
     public partial class LoginPage : ContentPage
     {
         Database _database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3"));
+
+        HomePage MyHomePage = new HomePage();
+        public Guid CurrentUserId;
 
         public LoginPage()
         {
@@ -22,6 +28,10 @@ namespace LiaFinder.Views
         {
             base.OnAppearing();
             listView.ItemsSource = await App.Database.GetRegUserTableAsync();
+
+
+
+
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -36,12 +46,27 @@ namespace LiaFinder.Views
             var db = new SQLiteConnection(dbpath);
             var myQuery = db.Table<RegUserTable>().Where(u => u.UserName.Equals(Entry_Username.Text) && u.Password.Equals(Entry_Password.Text)).FirstOrDefault();
 
-           
+       
 
-            if(myQuery != null)
-            {
-                App.Current.MainPage = new NavigationPage(new HomePage());
-            }
+                if (myQuery != null)    
+                {
+
+                CurrentUserId = myQuery.UserId;
+
+                var checkRole = MyHomePage.CheckRole(myQuery);
+
+                if(checkRole == true)
+                {
+                    App.Current.MainPage = new HomePage();
+                }
+                else
+                {
+                    App.Current.MainPage = new HomePage();
+                }
+
+        
+
+                }
             else
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -55,6 +80,7 @@ namespace LiaFinder.Views
                     }
                     else
                     {
+                  
                         App.Current.MainPage = new NavigationPage(new LoginPage());
                         //await Navigation.PushAsync(new LoginPage());
                     }

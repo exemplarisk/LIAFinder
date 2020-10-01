@@ -7,19 +7,20 @@
     <StackLayout>
 
         <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
-            <Grid.RowDefinitions>
+                    <Grid.RowDefinitions >
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                
             </Grid.RowDefinitions>
             <Entry Placeholder="Company Name" x:Name="Company_Name" Grid.Row="0"/>
             <Entry Placeholder="Company subject" x:Name="Company_Subject" Grid.Row="1"/>
             <Entry Placeholder="Company intern spots" x:Name="Company_InternSpots" Grid.Row="2" />
             <Entry Placeholder="Company Location" x:Name="Company_Location" Grid.Row="3"/>
+                    
 
-
-        </Grid>
+                </Grid>
 
 
         <Button Text="Generate another companie and show all companies" Grid.Row="3" Clicked="Handle_Clickedd"/>
@@ -42,7 +43,8 @@
                                 TextColor="#503026" />
                             <Label Text="{Binding CompanyLocation}"/>
                             <Label Text="{Binding CompanyinternSpots}"/>
-                        </StackLayout>
+                                    <Label Text="{Binding UserId}"/>
+                                </StackLayout>
      
                     </ViewCell>
                 </DataTemplate>

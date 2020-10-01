@@ -38,11 +38,15 @@ namespace LiaFinder
         {
             return _database.Table<RegUserTable>().ToListAsync();
         }
-        public Task<List<User>> GetUserAsync()
+   
+        public bool CheckROle (RegUserTable regUserTable)
         {
-            return _database.Table<User>().ToListAsync();
+            if (regUserTable.isCompany == false)
+            {
+                return false;
+            }
+            return true;
         }
-
         public bool LoginValidate(string userName, string password)
         {
             var data = _database.Table<RegUserTable>();

@@ -21,12 +21,15 @@ namespace LiaFinder.Views
 
             var item = new RegUserTable()
             {
+                UserId = Id,
                 UserName = EntryUserName.Text,
                 Password = EntryUserPassword.Text,
-                Email = EntryUserEmail.Text
+                Email = EntryUserEmail.Text,
+                isCompany = false,
             };
 
             db.Insert(item);
+
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Yes", "Cancel");

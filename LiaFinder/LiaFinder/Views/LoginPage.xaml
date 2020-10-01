@@ -23,7 +23,10 @@
                         <DataTemplate>
                             <TextCell 
                                     Text="{Binding UserName}"
-                              Detail="{Binding Password}" />
+                                
+                              Detail="{Binding UserId}" />
+
+                            
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     
