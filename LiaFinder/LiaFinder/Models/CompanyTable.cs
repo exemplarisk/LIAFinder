@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LiaFinder.Tables
 {
-   public class CompanyTable
+   public class Company
     {
         public Guid UserId { get; set; }
         public string CompanyName { get; set; }

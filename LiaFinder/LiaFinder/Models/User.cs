@@ -1,24 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using LiaFinder.Tables;
-using LiaFinder;
-
-namespace LiaFinder.Shared.Models
+﻿using System;
+namespace LiaFinder.Tables
 {
+    // TODO Change to User
+    // And implement changes
     public class User
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
+  
+        public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
-        public User () { }
+        public string Email { get; set; }
 
-        public User(string Username, string Password)
-        {
-            this.Username = Username;
-            this.Password = Password;
-        }
-      
+        public bool isCompany { get; set; } = false;
+
+        public bool isLoggedIn { get; set; } = false;
+
+        public Guid Id = Guid.NewGuid();
+
     }
 }
-      

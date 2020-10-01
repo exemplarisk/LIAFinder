@@ -17,9 +17,9 @@ namespace LiaFinder.Views
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
-            db.CreateTable<RegUserTable>();
+            db.CreateTable<User>();
 
-            var item = new RegUserTable()
+            var item = new User()
             {
                 UserId = Id,
                 UserName = EntryUserName.Text,
@@ -37,7 +37,6 @@ namespace LiaFinder.Views
                 if(result)
                 {
                     App.Current.MainPage = new NavigationPage(new LoginPage());
-
                 }
             });
                 

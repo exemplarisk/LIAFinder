@@ -7,7 +7,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
-
+// Do we need to get functions from here?
+// Is MainPage even used in our scenario?
 namespace LiaFinder.Views
 {
 
@@ -22,7 +23,7 @@ namespace LiaFinder.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetCompanyTableAsync();
+            listView.ItemsSource = await App.Database.GetCompanyAsync();
 
           
             // kolla user med id 
@@ -30,9 +31,9 @@ namespace LiaFinder.Views
             //måste fixa /kolla vem som är inloggad
 
             
-            }
+        }
 
-        public bool CheckRole(RegUserTable regusertable)
+        public bool CheckRole(User regusertable)
         {
             if(regusertable.isCompany == true )
             {
@@ -46,7 +47,7 @@ namespace LiaFinder.Views
 
    
         
-        async void Handle_Clicked(object sender, System.EventArgs e)
+        async void Handle_Clicked(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new LoginPage());
             App.Current.MainPage = new NavigationPage(new LoginPage());
@@ -54,38 +55,35 @@ namespace LiaFinder.Views
 
         async void GetCompany( object sender , EventArgs e)
         {
-            App.Current.MainPage = new LiaAAdvertisement();
+            App.Current.MainPage = new LiaAdsPage();
         }
 
         async void Handle_Clickedd(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
-            db.CreateTable<CompanyTable>();
+            db.CreateTable<Company>();
 
             try
             {
-
-                var item = new CompanyTable()
-            {
+                var item = new Company()
+                {
                
-                UserId = Id,
-                CompanyName = Company_Name.Text,
-                CompanySubject = Company_Subject.Text,
-                CompanyinternSpots = int.Parse(Company_InternSpots.Text),
-                CompanyLocation = Company_Location.Text,
+                    UserId = Id,
+                    CompanyName = Company_Name.Text,
+                    CompanySubject = Company_Subject.Text,
+                    CompanyinternSpots = int.Parse(Company_InternSpots.Text),
+                    CompanyLocation = Company_Location.Text,
                 
-
-            };
+                };
             
-            db.Insert(item);
-            listView.ItemsSource = await App.Database.GetCompanyTableAsync();
+                db.Insert(item);
+                listView.ItemsSource = await App.Database.GetCompanyAsync();
             }
-            catch(Exception exception)
+            catch(Exception x)
             {
-               
+                Console.WriteLine(x);
             }
-
 
         }
     }
