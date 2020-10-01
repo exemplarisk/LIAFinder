@@ -14,6 +14,7 @@ namespace LiaFinder
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<RegUserTable>().Wait();
+            _database.CreateTableAsync<CompanyTable>().Wait();
         }
         public Task<List<Student>> GetStudentAsync()
         {
@@ -28,6 +29,11 @@ namespace LiaFinder
             return _database.InsertAsync(user);
         }
 
+        public Task<List<CompanyTable>> GetCompanyTableAsync()
+        {
+            return _database.Table<CompanyTable>().ToListAsync();
+        }
+
         public Task<List<RegUserTable>> GetRegUserTableAsync()
         {
             return _database.Table<RegUserTable>().ToListAsync();
@@ -36,6 +42,7 @@ namespace LiaFinder
         {
             return _database.Table<User>().ToListAsync();
         }
+
         public bool LoginValidate(string userName, string password)
         {
             var data = _database.Table<RegUserTable>();
