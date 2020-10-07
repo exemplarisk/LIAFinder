@@ -2,6 +2,7 @@
 using System.IO;
 using LiaFinder.Views;
 using Xamarin.Forms;
+using LiaFinder.Mocks;
 
 namespace LiaFinder
 {
@@ -25,7 +26,9 @@ namespace LiaFinder
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            DependencyService.Register<MockAdsService>();
+
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

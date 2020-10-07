@@ -71,8 +71,7 @@ namespace LiaFinder.ViewModels
                 return;
             }
 
-            // TODO Implement functions for on clicked (AdDetailViewModel)
-            await Shell.Current.GoToAsync($"{nameof(LiaAdsPage)}?{nameof(LiaAdsViewModel)}");
+            await Shell.Current.GoToAsync($"{nameof(LiaAdsDetailPage)}?{nameof(LiaAdsDetailViewModel.AdId)}={ad.Id}");
         }
     }
 }

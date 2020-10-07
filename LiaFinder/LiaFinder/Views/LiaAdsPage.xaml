@@ -2,22 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LiaAdsPage"
-             Title="{Binding Title}"
-             xmlns:local="clr-namespace:Page.Views"  
-             xmlns:model="clr-namespace:Page.Models"  
+             Title="LiaFinder yao"
+             xmlns:local="clr-namespace:LiaFinder.ViewModels"
+             xmlns:model="clr-namespace:LiaFinder.Models"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"/>
-    </ContentPage.ToolbarItems>
-    <!--Add RefreshView Function here-->
-    <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
+    <ContentPage.BindingContext>
+        <local:LiaAdsViewModel/>
+    </ContentPage.BindingContext>
+    <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="AdsListView"
+                ItemsSource="{Binding Ads}"
                 SelectionMode="None">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="5"
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5"
                       BackgroundColor="White">
-                    
+
                         <Frame
                             HeightRequest="100"
                             Padding="0"
@@ -25,29 +25,25 @@
                             BorderColor="Gray "
                             CornerRadius="0"
                             BackgroundColor="White">
-                        <StackLayout x:DataType="model:Item"
+                            <StackLayout x:DataType="model:Ad"
                                      Margin="10,5,15,5">
-
-                            <Label Text="{Binding Text}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
+                                <Label Text="{Binding Text}" 
+                            LineBreakMode="NoWrap"  
                             FontSize="16"/>
-                            <Label Text="{Binding Description}" 
+                                <Label Text="{Binding Description}" 
                             LineBreakMode="WordWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="13" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
-                                CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
-    <!--Add RefreshView Function here--> 
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LiaAdsViewModel}}, Path=AdTapped}"		
+                                CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>

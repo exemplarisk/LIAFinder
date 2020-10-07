@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace LiaFinder.ViewModels
 {
-    [QueryProperty(nameof(adId), nameof(adId))]
+    [QueryProperty(nameof(AdId), nameof(AdId))]
     public class LiaAdsDetailViewModel : BaseViewModel
     {
         private string adId;

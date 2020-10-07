@@ -30,13 +30,14 @@ namespace LiaFinder.Views
             listView.ItemsSource = await App.Database.GetUserAsync();
         }
 
-        async void Handle_Clicked(object sender, EventArgs e)
+        async void Register(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new RegistrationPage());
-            //await Navigation.PushAsync(new RegistrationPage());
-        }
 
-        async void Handle_Clicked_1(object sender, EventArgs e)
+            await Shell.Current.GoToAsync("registrationpage");
+
+         }
+
+        async void Login(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
@@ -50,11 +51,11 @@ namespace LiaFinder.Views
 
                     if(checkRole == true)
                     {
-                        App.Current.MainPage = new HomePage();
+                    await Shell.Current.GoToAsync("homepage");
                     }
                     else
                     {
-                        App.Current.MainPage = new HomePage();
+                        await Shell.Current.GoToAsync("liapage");
                     }
                 }
             else

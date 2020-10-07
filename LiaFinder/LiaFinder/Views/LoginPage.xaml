@@ -13,8 +13,8 @@
                     </Grid.RowDefinitions>
                     <Entry Placeholder="Username" x:Name="Entry_Username" Grid.Row="0"/>
                     <Entry Placeholder="Password" x:Name="Entry_Password" IsPassword="True" Grid.Row="1"/>
-                    <Button Text="Login" Grid.Row="2" Clicked="Handle_Clicked_1" BackgroundColor="#0077be" TextColor="White"/>
-                    <Button Text="SignUp" Grid.Row="3" Clicked="Handle_Clicked"/>
+                    <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#0077be" TextColor="White"/>
+                    <Button Text="SignUp" Grid.Row="3" Clicked="Register"/>
 
 
                 </Grid>

@@ -16,7 +16,7 @@ namespace LiaFinder.Mocks
         {
             ads = new List<Ad>()
             {
-                new Ad { Id = Guid.NewGuid().ToString(), Text = "Front-End Sökes", Description="This is a really dummy dummy text that illustrates how text could be displayed in this Ad." },
+               new Ad { Id = Guid.NewGuid().ToString(), Text = "Front-End Sökes", Description="This is a really dummy dummy text that illustrates how text could be displayed in this Ad." },
                 new Ad { Id = Guid.NewGuid().ToString(), Text = "Back-End Sökes", Description="This is a really dummy dummy text that illustrates how text could be displayed in this Ad" },
                 new Ad { Id = Guid.NewGuid().ToString(), Text = "Driven Utvecklare", Description="This is a really dummy dummy text that illustrates how text could be displayed in this Ad" },
                 new Ad { Id = Guid.NewGuid().ToString(), Text = "Burger Flipper", Description="This is a really dummy dummy text that illustrates how text could be displayed in this Ad" },
