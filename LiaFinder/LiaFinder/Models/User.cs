@@ -10,6 +10,8 @@ namespace LiaFinder.Models
 
         public bool isCompany { get; set; } = false;
 
+        public bool isAdmin { get; set; } = false;
+
         public bool isLoggedIn { get; set; } = false;
 
         public Guid Id = Guid.NewGuid();

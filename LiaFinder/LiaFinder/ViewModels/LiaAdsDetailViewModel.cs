@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.IO;
+using SQLite;
+using LiaFinder.Models;
 
 namespace LiaFinder.ViewModels
 {
@@ -47,16 +53,22 @@ namespace LiaFinder.ViewModels
         {
             try
             {
-                var ad = await App.Database.GetAdsAsync();
-                foreach(var item in ad)
+
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
+                var db = new SQLiteConnection(dbpath);
+
+                var myQuery = db.Table<Ad>().Where(u => u.Id.Equals(id)).FirstOrDefault();
+
+                if (myQuery != null)
                 {
-                    Id = item.Id;
-                    // Implement this
-                    //CompanyName = item.CompanyName;
-                    Text = item.Text;
-                    Description = item.Description;
+
+                        Id = myQuery.Id;
+                        Text = myQuery.Text;
+                        Description = myQuery.Description;
+ 
 
                 }
+               
                  
             }
             catch(Exception ex)

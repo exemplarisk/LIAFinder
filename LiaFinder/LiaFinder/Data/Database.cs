@@ -22,6 +22,12 @@ namespace LiaFinder
         {
             return await _database.Table<Ad>().ToListAsync();
         }
+        public async Task<List<Ad>> GetAdInformationAsync(Ad myQuery)
+        {
+          
+            
+            return await _database.Table<Ad>().ToListAsync();
+        }
 
         public async Task<bool> AddItemAsync(Ad ad)
         {

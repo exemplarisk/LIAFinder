@@ -94,7 +94,7 @@ namespace LiaFinder.ViewModels
         private async void OnSave()
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
+            var db = new SQLiteConnection(dbpath);  
             db.CreateTable<Ad>();
 
             Ad newAd = new Ad()
