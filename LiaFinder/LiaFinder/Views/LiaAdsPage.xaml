@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:LiaFinder.ViewModels"
              xmlns:model="clr-namespace:LiaFinder.Models"
              x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.BindingContext>
         <local:LiaAdsViewModel/>
     </ContentPage.BindingContext>

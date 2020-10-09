@@ -2,7 +2,6 @@
 using System.IO;
 using LiaFinder.Views;
 using Xamarin.Forms;
-using LiaFinder.Mocks;
 
 namespace LiaFinder
 {
@@ -25,8 +24,6 @@ namespace LiaFinder
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockAdsService>();
 
             MainPage = new AppShell();
         }

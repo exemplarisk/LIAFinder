@@ -1,37 +1,38 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using LiaFinder.Shared.Models;
+using LiaFinder.Models;
 using SQLite;
-using LiaFinder.Tables;
-using LiaFinder.Interfaces;
 
 namespace LiaFinder
 {
-    public class Database 
+    public class Database
     {
         readonly SQLiteAsyncConnection _database;
 
         public Database(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
+
             _database.CreateTableAsync<User>().Wait();
-            _database.CreateTableAsync<Company>().Wait();
+            _database.CreateTableAsync<Ad>().Wait();
         }
 
-        public async Task<List<Student>> GetAdsAsync()
+        // Changed this from Student to Ad, not used anywhere
+        public async Task<List<Ad>> GetAdsAsync()
         {
-            return await _database.Table<Student>().ToListAsync();
+            return await _database.Table<Ad>().ToListAsync();
         }
 
-        public Task<int> SaveItemAsync(Student student)
+        public async Task<bool> AddItemAsync(Ad ad)
         {
-            return _database.InsertAsync(student);
+            await _database.InsertAsync(ad);
+
+            return await Task.FromResult(true);
         }
 
-        // Save this in the meantime, this works, needs to be generic though
-        public Task<List<Company>> GetCompanyAsync()
+        public Task<int> SaveItemAsync(User user)
         {
-            return _database.Table<Company>().ToListAsync();
+            return _database.InsertAsync(user);
         }
 
         public Task<List<User>> GetUserAsync()

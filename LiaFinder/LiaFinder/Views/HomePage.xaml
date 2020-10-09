@@ -23,9 +23,9 @@
                 </Grid>
 
 
-        <Button Text="Generate another companie and show all companies" Grid.Row="3" Clicked="Handle_Clickedd"/>
+                <!--<Button Text="Generate another companie and show all companies" Grid.Row="3" Clicked="OnClicked_AddCompany"/>-->
 
-        <Button VerticalOptions="EndAndExpand" Text="Logout" Clicked="Handle_Clicked" TextColor="#0077be"/>
+                <!--<Button VerticalOptions="EndAndExpand" Text="Logout" Clicked="OnClicked_Logout" TextColor="#0077be"/>-->
 
         
 

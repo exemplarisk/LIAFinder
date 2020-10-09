@@ -1,12 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using LiaFinder.Tables;
 using System.IO;
 using SQLite;
-using LiaFinder.Views;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using LiaFinder.Models;
 
 namespace LiaFinder.Views
 {
@@ -27,7 +24,7 @@ namespace LiaFinder.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetUserAsync();
+            //listView.ItemsSource = await App.Database.GetUserAsync();
         }
 
         async void Register(object sender, EventArgs e)
@@ -51,7 +48,7 @@ namespace LiaFinder.Views
 
                     if(checkRole == true)
                     {
-                    await Shell.Current.GoToAsync("homepage");
+                        await Shell.Current.GoToAsync("homepage");
                     }
                     else
                     {
@@ -62,15 +59,11 @@ namespace LiaFinder.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("Error", "Invalid Login or password..", "Yes", "Back");
+                    var result = await DisplayAlert("Error", "Invalid Login or password..", "Yes", "Back");
 
                     if(result)
                     {
-                        App.Current.MainPage = new NavigationPage(new LoginPage());
-                    }
-                    else
-                    {
-                        App.Current.MainPage = new NavigationPage(new LoginPage());
+                        await Shell.Current.GoToAsync("loginpage");
                     }
                 });
             }

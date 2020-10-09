@@ -21,7 +21,7 @@
                         <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail"/>
                     </StackLayout>
                     <StackLayout Grid.Row="3">
-                        <Button Text="Register" HorizontalOptions="CenterAndExpand" WidthRequest="100" TextColor="White" BackgroundColor="Blue" Clicked="Handle_Clicked">
+                        <Button Text="Register" HorizontalOptions="CenterAndExpand" WidthRequest="100" TextColor="White" BackgroundColor="Blue" Clicked="Onclicked_RegisterStudent">
 
                         </Button>
 

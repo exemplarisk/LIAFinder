@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using SQLite;
-using LiaFinder.Tables;
+using LiaFinder.Models;
 
 namespace LiaFinder.Views
 {
@@ -13,7 +12,7 @@ namespace LiaFinder.Views
         {
             InitializeComponent();
         }
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void Onclicked_RegisterStudent(object sender, System.EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
@@ -36,7 +35,7 @@ namespace LiaFinder.Views
 
                 if(result)
                 {
-                    App.Current.MainPage = new NavigationPage(new LoginPage());
+                    await Shell.Current.GoToAsync("loginpage"); 
                 }
             });
                 

@@ -1,12 +1,5 @@
 ﻿using LiaFinder.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 
 namespace LiaFinder.Views
 {
@@ -18,7 +11,6 @@ namespace LiaFinder.Views
         {
             InitializeComponent();
             BindingContext = _viewModel = new LiaAdsViewModel();
-
         }
 
         protected override void OnAppearing()
@@ -26,7 +18,5 @@ namespace LiaFinder.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
-
-        
     }
 }

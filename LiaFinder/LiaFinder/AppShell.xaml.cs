@@ -1,9 +1,5 @@
 ﻿using Xamarin.Forms;
 using LiaFinder.Views;
-
-
-
-
 namespace LiaFinder
 {
     public partial class AppShell : Shell
@@ -16,6 +12,7 @@ namespace LiaFinder
             Routing.RegisterRoute("liapage", typeof(LiaAdsPage));
             Routing.RegisterRoute("loginpage", typeof(LoginPage));
             Routing.RegisterRoute("registrationpage", typeof(RegistrationPage));
+            Routing.RegisterRoute("newadpage", typeof(NewAdPage));
 
         }
     }

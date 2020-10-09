@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using LiaFinder.ViewModels;
 using Xamarin.Forms;
 
 namespace LiaFinder.ViewModels
@@ -28,6 +25,11 @@ namespace LiaFinder.ViewModels
             set => SetProperty(ref description, value);
         }
 
+        // TODO
+
+        // Implement logic to get values for newly implemented attributes
+        // In Ad class.
+
         public string AdId
         {
             get
@@ -41,14 +43,21 @@ namespace LiaFinder.ViewModels
             }
         }
 
-        public async void LoadAdId(string adid)
+        public async void LoadAdId(string id)
         {
             try
             {
-                var ad = await DataStore.GetItemAsync(adid);
-                Id = ad.Id;
-                Text = ad.Text;
-                Description = ad.Description; 
+                var ad = await App.Database.GetAdsAsync();
+                foreach(var item in ad)
+                {
+                    Id = item.Id;
+                    // Implement this
+                    //CompanyName = item.CompanyName;
+                    Text = item.Text;
+                    Description = item.Description;
+
+                }
+                 
             }
             catch(Exception ex)
             {

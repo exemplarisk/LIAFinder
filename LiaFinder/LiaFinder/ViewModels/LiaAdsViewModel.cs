@@ -13,10 +13,11 @@ namespace LiaFinder.ViewModels
     class LiaAdsViewModel : BaseViewModel
     {
         private Ad _selectedAd;
+        
 
         public ObservableCollection<Ad> Ads { get; }
         public Command LoadAdsCommand { get; }
-        public Command AddAdsCommand { get; }
+        public Command AddAdCommand { get; }
         public Command<Ad> AdTapped { get; }
 
         public LiaAdsViewModel()
@@ -25,7 +26,9 @@ namespace LiaFinder.ViewModels
             Ads = new ObservableCollection<Ad>();
             LoadAdsCommand = new Command(async () => await ExecuteLoadAdsCommand());
 
-            AdTapped = new Command<Ad>(OnAdSelected); 
+            AdTapped = new Command<Ad>(OnAdSelected);
+
+            AddAdCommand = new Command<Ad>(NewAdd);
 
         }
 
@@ -52,16 +55,21 @@ namespace LiaFinder.ViewModels
             try
             {
                 Ads.Clear();
-                var ads = await DataStore.GetItemsAsync(true);
-                foreach (var item in ads)
+                var ads = await App.Database.GetAdsAsync();
+                foreach (var ad in ads)
                 {
-                    Ads.Add(item);
+                    Ads.Add(ad);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        private async void NewAdd(object obj)
+        {
+            await Shell.Current.GoToAsync("newadpage");
         }
 
         async void OnAdSelected(Ad ad)
