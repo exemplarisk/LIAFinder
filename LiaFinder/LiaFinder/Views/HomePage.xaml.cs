@@ -21,6 +21,7 @@ namespace LiaFinder.Views
             //måste fixa /kolla vem som är inloggad
         }
 
+        // fixa så att detta lägga i databas klassen eller??
         public bool CheckRole(User user)
         {
             if(user.isCompany == true)
@@ -29,7 +30,16 @@ namespace LiaFinder.Views
             }
             return false;
         }
-            
+
+        public bool CheckIfAdmin(User user)
+        {
+            if (user.isAdmin == false)
+            {
+                return false;
+            }
+            return true;
+        }
+
         async void OnClicked_Logout(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new LoginPage());

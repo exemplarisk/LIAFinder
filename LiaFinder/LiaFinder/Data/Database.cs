@@ -22,13 +22,7 @@ namespace LiaFinder
         {
             return await _database.Table<Ad>().ToListAsync();
         }
-        public async Task<List<Ad>> GetAdInformationAsync(Ad myQuery)
-        {
-          
-            
-            return await _database.Table<Ad>().ToListAsync();
-        }
-
+ 
         public async Task<bool> AddItemAsync(Ad ad)
         {
             await _database.InsertAsync(ad);
@@ -46,14 +40,6 @@ namespace LiaFinder
             return _database.Table<User>().ToListAsync();
         }
    
-        public bool CheckRole (User user)
-        {
-            if (user.isCompany == false)
-            {
-                return false;
-            }
-            return true;
-        }
         public bool LoginValidate(string userName, string password)
         {
             var data = _database.Table<User>();

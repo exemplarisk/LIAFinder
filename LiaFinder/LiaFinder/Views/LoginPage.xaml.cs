@@ -46,18 +46,26 @@ namespace LiaFinder.Views
 
                     var checkRole = MyHomePage.CheckRole(myQuery);
 
+                    var checkIfAdmin = MyHomePage.CheckIfAdmin(myQuery);
+
                     if(checkRole == true)
                     {
                         await Shell.Current.GoToAsync("homepage");
                     }
+                    else if(checkIfAdmin == true)
+                    {
+                    await Shell.Current.GoToAsync("adminpage");
+                    }
                     else
+                
                     {
                         await Shell.Current.GoToAsync("liapage");
-                    }
+                    } 
                 }
-            else
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await DisplayAlert("Error", "Invalid Login or password..", "Yes", "Back");
 

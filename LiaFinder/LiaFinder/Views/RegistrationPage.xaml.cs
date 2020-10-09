@@ -25,6 +25,7 @@ namespace LiaFinder.Views
                 Password = EntryUserPassword.Text,
                 Email = EntryUserEmail.Text,
                 isCompany = false,
+                isAdmin = false,
             };
 
             db.Insert(item);
