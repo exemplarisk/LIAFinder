@@ -16,9 +16,6 @@
             <Label Text="Wanted Skills" FontSize="Medium" />
             <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
 
-            <Label Text="Wanted Skills" FontSize="Medium" />
-            <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
-
             <Label Text="Company Location" FontSize="Medium" />
             <Editor Text="{Binding CompanyLocation, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
 
