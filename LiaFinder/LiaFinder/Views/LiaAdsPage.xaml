@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LiaFinder.Views.LiaAdsPage"
+             Title="LiaFinder"
+             xmlns:local="clr-namespace:LiaFinder.ViewModels"
+             xmlns:model="clr-namespace:LiaFinder.Models"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.BindingContext>
+        <local:LiaAdsViewModel/>
+    </ContentPage.BindingContext>
+    <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="AdsListView"
+                ItemsSource="{Binding Ads}"
+                SelectionMode="None" HeightRequest="10" BackgroundColor="#232F34">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8"
+                      BackgroundColor="#232F34">
+
+                        <Frame
+                            HeightRequest="100"
+                            Padding="0"
+                            IsClippedToBounds="True"
+                            BorderColor="#344955"
+                            CornerRadius="5"
+                            BackgroundColor="#344955">
+                            <StackLayout x:DataType="model:Ad"
+                                     Margin="10,5,15,5">
+                                <Label Text="{Binding Text}" 
+                            LineBreakMode="NoWrap"  
+                            FontSize="16" TextColor="White"/>
+                                <Label Text="{Binding Description} " 
+                            LineBreakMode="WordWrap"
+                            FontSize="13" TextColor="White"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LiaAdsViewModel}}, Path=AdTapped}"		
+                                CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LiaFinder.Views.LoginPage">
+    <ContentPage.Content>
+        
+        <Frame BackgroundColor="#232F34">
+            
+            <StackLayout>
+                <Image Source="https://i.ibb.co/80N3mPG/Facebook-Post-940x788-px-1.png"></Image>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="25">
+                    <Entry Placeholder="Username" x:Name="Entry_Username" TextColor="#F9AA33"/>
+                    <Entry Placeholder="Password" x:Name="Entry_Password" IsPassword="True" Grid.Row="1" TextColor="#F9AA33"/>
+                    <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#4A6572" TextColor="White" />
+                    <Button Text="SignUp" Grid.Row="3" Clicked="Register"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
