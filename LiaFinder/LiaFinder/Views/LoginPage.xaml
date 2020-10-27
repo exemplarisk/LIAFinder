@@ -3,38 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LoginPage">
     <ContentPage.Content>
-        <ScrollView>
+        
+        <Frame BackgroundColor="#232F34">
+            
             <StackLayout>
-                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Entry Placeholder="Username" x:Name="Entry_Username" Grid.Row="0"/>
-                    <Entry Placeholder="Password" x:Name="Entry_Password" IsPassword="True" Grid.Row="1"/>
-                    <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#0077be" TextColor="White"/>
+                <Image Source="https://i.ibb.co/80N3mPG/Facebook-Post-940x788-px-1.png"></Image>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="25">
+                    <Entry Placeholder="Username" x:Name="Entry_Username" TextColor="#F9AA33"/>
+                    <Entry Placeholder="Password" x:Name="Entry_Password" IsPassword="True" Grid.Row="1" TextColor="#F9AA33"/>
+                    <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#4A6572" TextColor="White" />
                     <Button Text="SignUp" Grid.Row="3" Clicked="Register"/>
-
-
                 </Grid>
-                <ListView x:Name="listView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell 
-                                    Text="{Binding UserName}"
-                                
-                              Detail="{Binding UserId}" />
-
-                            
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    
-                </ListView>
-
             </StackLayout>
-        </ScrollView>
-    
-    
+        </Frame>
     </ContentPage.Content>
 </ContentPage>

@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
-using LiaFinder.Models;
-using LiaFinder.Interfaces;
+
 namespace LiaFinder.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public IDataStore<Ad> DataStore => DependencyService.Get<IDataStore<Ad>>();
 
         bool isBusy = false;
         public bool IsBusy

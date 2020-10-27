@@ -4,11 +4,14 @@
              x:Class="LiaFinder.Views.LiaAdsDetailPage"
              Title="{Binding Title}">
 
+    <Frame BackgroundColor="#344955">
     <StackLayout Spacing="20" Padding="10">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
+            
+            <Label Text="Text:" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding Text}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="Description:" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding Description}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <Button Text="Apply" FontSize="Large" BackgroundColor="#4A6572" HorizontalOptions="Center"></Button>
     </StackLayout>
-    
+    </Frame>
 </ContentPage>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
@@ -67,9 +66,7 @@ namespace LiaFinder.ViewModels
                         Description = myQuery.Description;
  
 
-                }
-               
-                 
+                } 
             }
             catch(Exception ex)
             {
@@ -77,6 +74,4 @@ namespace LiaFinder.ViewModels
             }
         }
     }
-
-
 }

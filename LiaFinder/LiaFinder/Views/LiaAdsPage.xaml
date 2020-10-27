@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LiaAdsPage"
-             Title="LiaFinder yao"
+             Title="LiaFinder"
              xmlns:local="clr-namespace:LiaFinder.ViewModels"
              xmlns:model="clr-namespace:LiaFinder.Models"
              x:Name="BrowseItemsPage">
@@ -17,27 +17,27 @@
     <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"
-                SelectionMode="None">
+                SelectionMode="None" HeightRequest="10" BackgroundColor="#232F34">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="5"
-                      BackgroundColor="White">
+                    <Grid Padding="8"
+                      BackgroundColor="#232F34">
 
                         <Frame
                             HeightRequest="100"
                             Padding="0"
                             IsClippedToBounds="True"
-                            BorderColor="Gray "
-                            CornerRadius="0"
-                            BackgroundColor="White">
+                            BorderColor="#344955"
+                            CornerRadius="5"
+                            BackgroundColor="#344955">
                             <StackLayout x:DataType="model:Ad"
                                      Margin="10,5,15,5">
                                 <Label Text="{Binding Text}" 
                             LineBreakMode="NoWrap"  
-                            FontSize="16"/>
-                                <Label Text="{Binding Description}" 
+                            FontSize="16" TextColor="White"/>
+                                <Label Text="{Binding Description} " 
                             LineBreakMode="WordWrap"
-                            FontSize="13" />
+                            FontSize="13" TextColor="White"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer
                                         NumberOfTapsRequired="1"
