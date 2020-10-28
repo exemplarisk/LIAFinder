@@ -11,7 +11,7 @@
             <Label Text="{Binding Text}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="Description:" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="{Binding Description}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <Button Text="Apply" FontSize="Large" BackgroundColor="#4A6572" HorizontalOptions="Center"></Button>
+            <Button Text="Apply" FontSize="Large" BackgroundColor="#4A6572" HorizontalOptions="Center" Clicked="OnApplyButtonClicked"></Button>
     </StackLayout>
     </Frame>
 </ContentPage>

@@ -1,5 +1,4 @@
 ﻿using System;
-using SQLite;
 using LiaFinder.Models;
 using System.IO;
 using Xamarin.Forms;

@@ -8,12 +8,29 @@
             
             <StackLayout>
                 <Image Source="https://i.ibb.co/2F7LXLJ/icon.png" HorizontalOptions="Center"></Image>
-                <Grid VerticalOptions="CenterAndExpand" Margin="15" RowSpacing="35">
-                    <Entry Placeholder="Username" PlaceholderColor="#a6a6a6" x:Name="Entry_Username" TextColor="#a6a6a6" />
-                    <Entry Placeholder="Password" PlaceholderColor="#a6a6a6" x:Name="Entry_Password" IsPassword="True" Grid.Row="1" TextColor="#a6a6a6"/>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20,0,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Entry Placeholder="Username" PlaceholderColor="#a6a6a6" x:Name="Entry_Username" TextColor="#a6a6a6" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Entry Placeholder="Password" PlaceholderColor="#a6a6a6" x:Name="Entry_Password" IsPassword="True" Grid.Row="1" TextColor="#a6a6a6"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#4A6572" TextColor="White" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Button Text="Sign Up" Grid.Row="3" Clicked="Register" ScaleY="1.1" ScaleX="1.2" BackgroundColor="#F9AA33"/>
+                    </StackLayout>
+                    
                 </Grid>
-                <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#4A6572" TextColor="White" FontSize="Medium"/>
-                <Button Text="Sign Up" Grid.Row="3" Clicked="Register" ScaleY="1.1" ScaleX="1.2" BackgroundColor="#F9AA33"/>
+                
+                
             </StackLayout>
         </Frame>
     </ContentPage.Content>
