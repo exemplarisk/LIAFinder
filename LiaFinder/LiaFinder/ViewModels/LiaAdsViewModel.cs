@@ -48,6 +48,7 @@ namespace LiaFinder.ViewModels
             }
         }
 
+
         async Task ExecuteLoadAdsCommand()
         {
             IsBusy = true;
@@ -60,6 +61,7 @@ namespace LiaFinder.ViewModels
                 {
                     Ads.Add(ad);
                 }
+                IsBusy = false;
             }
             catch (Exception ex)
             {

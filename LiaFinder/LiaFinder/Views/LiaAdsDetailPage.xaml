@@ -2,15 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LiaAdsDetailPage"
-             Title="{Binding Title}">
+             Title="{Binding CompanyName}">
 
     <Frame BackgroundColor="#344955">
-    <StackLayout Spacing="20" Padding="10">
-            
-            <Label Text="Text:" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding Text}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="Description:" FontSize="Large" HorizontalOptions="Center" TextColor="White"/>
+    <StackLayout Spacing="10">
+
+            <Label Text="{Binding Text}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding AdTitle}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="{Binding Description}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding CompanyLocation}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding CompanyInternSpots}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+                <Image Source="person.png" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
             <Button Text="Apply" FontSize="Large" BackgroundColor="#4A6572" HorizontalOptions="Center"></Button>
     </StackLayout>
     </Frame>

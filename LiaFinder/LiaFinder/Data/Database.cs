@@ -35,6 +35,7 @@ namespace LiaFinder
             return _database.InsertAsync(user);
         }
 
+
         public Task<List<User>> GetUserAsync()
         {
             return _database.Table<User>().ToListAsync();

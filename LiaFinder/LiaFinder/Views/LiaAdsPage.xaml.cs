@@ -5,7 +5,7 @@ namespace LiaFinder.Views
 {
     public partial class LiaAdsPage : ContentPage
     {
-        LiaAdsViewModel _viewModel;
+       readonly LiaAdsViewModel _viewModel;
 
         public LiaAdsPage()
         {
@@ -15,8 +15,7 @@ namespace LiaFinder.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            //_viewModel.OnAppearing();
+            
         }
     }
 }

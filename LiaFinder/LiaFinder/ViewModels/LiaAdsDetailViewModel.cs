@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using System.IO;
 using SQLite;
 using LiaFinder.Models;
@@ -12,9 +10,16 @@ namespace LiaFinder.ViewModels
     [QueryProperty(nameof(AdId), nameof(AdId))]
     public class LiaAdsDetailViewModel : BaseViewModel
     {
+        
         private string adId;
         private string text;
         private string description;
+        private string companyname;
+        private string adtitle;
+        private string companylocation;
+        private string adskills;
+        private string companyinternspots;
+
 
         public string Id { get; set; }
 
@@ -28,6 +33,34 @@ namespace LiaFinder.ViewModels
         {
             get => description;
             set => SetProperty(ref description, value);
+        }
+        public string CompanyName
+        {
+            get => companyname;
+            set => SetProperty(ref companyname, value);
+        }
+        public string AdTitle
+        {
+            get => adtitle;
+            set => SetProperty(ref adtitle, value);
+        }
+
+        public string CompanyLocation
+        {
+            get => companylocation;
+            set => SetProperty(ref companylocation, value);
+        }
+
+        public string AdSkills
+        {
+            get => adskills;
+            set => SetProperty(ref adskills, value);
+        }
+
+        public string CompanyInternSpots
+        {
+            get => companyinternspots;
+            set => SetProperty(ref companyinternspots, value);
         }
 
         // TODO
@@ -47,7 +80,7 @@ namespace LiaFinder.ViewModels
                 LoadAdId(value);
             }
         }
-
+       
         public async void LoadAdId(string id)
         {
             try
@@ -61,10 +94,13 @@ namespace LiaFinder.ViewModels
                 if (myQuery != null)
                 {
 
-                        Id = myQuery.Id;
-                        Text = myQuery.Text;
-                        Description = myQuery.Description;
- 
+                    Id = myQuery.Id;
+                    Text = myQuery.Text;
+                    Description = myQuery.Description;
+                    CompanyName = myQuery.CompanyName;
+                    AdSkills = myQuery.AdSkills;
+                    CompanyLocation = myQuery.CompanyLocation;
+                    CompanyInternSpots = myQuery.CompanyInternSpots;
 
                 } 
             }
