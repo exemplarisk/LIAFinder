@@ -15,7 +15,7 @@ namespace LiaFinder.Views
 
         protected override void OnAppearing()
         {
-            
+            _viewModel.OnAppearing();
         }
     }
 }

@@ -93,7 +93,6 @@ namespace LiaFinder.ViewModels
 
                 if (myQuery != null)
                 {
-
                     Id = myQuery.Id;
                     Text = myQuery.Text;
                     Description = myQuery.Description;
@@ -101,7 +100,6 @@ namespace LiaFinder.ViewModels
                     AdSkills = myQuery.AdSkills;
                     CompanyLocation = myQuery.CompanyLocation;
                     CompanyInternSpots = myQuery.CompanyInternSpots;
-
                 } 
             }
             catch(Exception ex)

@@ -32,8 +32,9 @@ namespace LiaFinder.ViewModels
 
         }
 
-        public void OnAppearing()
+        public async void OnAppearing()
         {
+            await ExecuteLoadAdsCommand();
             IsBusy = true;
             SelectedAd = null;
         }
