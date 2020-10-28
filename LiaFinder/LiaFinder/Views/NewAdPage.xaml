@@ -5,33 +5,35 @@
              Shell.PresentationMode="ModalAnimated"
              Title="New Ad">
     <ContentPage.Content>
-        <StackLayout Spacing="3" Padding="15">
+        <Frame BackgroundColor="#344955">
+            <StackLayout Spacing="3" Padding="15">
 
-            <Label Text="Company" FontSize="Medium" />
-            <Editor Text="{Binding CompanyName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Company" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding CompanyName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
 
-            <Label Text="Title" FontSize="Medium" />
-            <Editor Text="{Binding AdTitle, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Title" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding AdTitle, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
 
-            <Label Text="Wanted Skills" FontSize="Medium" />
-            <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Wanted Skills" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
 
-            <Label Text="Company Location" FontSize="Medium" />
-            <Editor Text="{Binding CompanyLocation, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Company Location" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding CompanyLocation, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
 
-            <Label Text="Intern Spots" FontSize="Medium" />
-            <Editor Text="{Binding CompanyInternSpots, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Intern Spots" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding CompanyInternSpots, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
 
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+                <Label Text="Text" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" TextColor="#F9AA33" />
+
+                <Label Text="Description" FontSize="Medium" TextColor="#a6a6a6"/>
+                <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
             
             <StackLayout Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="#4A6572" TextColor="White"></Button>
+                    <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="#F9AA33"></Button>
             </StackLayout>
         </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>
