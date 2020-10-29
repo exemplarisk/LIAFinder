@@ -13,7 +13,6 @@ namespace LiaFinder.ViewModels
         
         private string adId;
         private string text;
-        private string description;
         private string companyname;
         private string adtitle;
         private string companylocation;
@@ -29,11 +28,6 @@ namespace LiaFinder.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
-        }
         public string CompanyName
         {
             get => companyname;
@@ -95,7 +89,6 @@ namespace LiaFinder.ViewModels
                 {
                     Id = myQuery.Id;
                     Text = myQuery.Text;
-                    Description = myQuery.Description;
                     CompanyName = myQuery.CompanyName;
                     AdSkills = myQuery.AdSkills;
                     CompanyLocation = myQuery.CompanyLocation;
