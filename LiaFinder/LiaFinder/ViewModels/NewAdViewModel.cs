@@ -101,7 +101,6 @@ namespace LiaFinder.ViewModels
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                Description = Description,
                 CompanyName = CompanyName,
                 AdTitle = AdTitle,
                 AdSkills = AdSkills,
