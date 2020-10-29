@@ -32,8 +32,9 @@ namespace LiaFinder.ViewModels
 
         }
 
-        public void OnAppearing()
+        public async void OnAppearing()
         {
+            await ExecuteLoadAdsCommand();
             IsBusy = true;
             SelectedAd = null;
         }
@@ -48,6 +49,7 @@ namespace LiaFinder.ViewModels
             }
         }
 
+
         async Task ExecuteLoadAdsCommand()
         {
             IsBusy = true;
@@ -60,6 +62,7 @@ namespace LiaFinder.ViewModels
                 {
                     Ads.Add(ad);
                 }
+                IsBusy = false;
             }
             catch (Exception ex)
             {
