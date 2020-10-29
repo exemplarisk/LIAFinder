@@ -4,18 +4,19 @@
              x:Class="LiaFinder.Views.LiaAdsDetailPage"
              Title="{Binding CompanyName}">
 
-    <Frame BackgroundColor="#344955">
-    <StackLayout Spacing="10">
+    <Frame BackgroundColor="#272727">
+    <StackLayout Spacing="50" Margin="20">
 
             <Label Text="{Binding Text}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="{Binding AdTitle}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding Description}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding CompanyLocation}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding CompanyInternSpots}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding CompanyLocation}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
+            <StackLayout Orientation="Horizontal" Spacing="-325">
+            <Label Text="{Binding CompanyInternSpots}" FontSize="Small" HorizontalOptions="CenterAndExpand" TextColor="White"/>
                 <Image Source="person.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
-            <Button Text="Apply" FontSize="Large" BackgroundColor="#4A6572" HorizontalOptions="Center"></Button>
+            <Frame Padding="50" Margin="40" BackgroundColor="#272727" BorderColor="#272727" VerticalOptions="End" HasShadow="False">
+                <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center"></Button>
+            </Frame>
     </StackLayout>
     </Frame>
 </ContentPage>

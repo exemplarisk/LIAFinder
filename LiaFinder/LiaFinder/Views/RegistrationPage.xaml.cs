@@ -28,7 +28,22 @@ namespace LiaFinder.Views
                 isAdmin = false,
             };
 
-            db.Insert(item);
+
+            // TODO: Make sure you can't register with empty credentials
+            var entry = item.ToString();
+
+            if (entry == null)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Whoops", "Something Went Wrong", "Ok");
+                });
+            }
+
+            else
+            {
+                db.Insert(item);
+            }
 
             Device.BeginInvokeOnMainThread(async () =>
             {

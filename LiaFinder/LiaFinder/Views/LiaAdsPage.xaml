@@ -8,7 +8,7 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
@@ -17,19 +17,19 @@
     <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"
-                SelectionMode="None" HeightRequest="10" BackgroundColor="#232F34">
+                SelectionMode="None" HeightRequest="10" BackgroundColor="#272727">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="8"
-                      BackgroundColor="#232F34">
+                      BackgroundColor="#272727">
 
                         <Frame
                             HeightRequest="130"
                             Padding="0"
                             IsClippedToBounds="True"
-                            BorderColor="#344955"
+                            BorderColor="#4f4f4f"
                             CornerRadius="5"
-                            BackgroundColor="#344955">
+                            BackgroundColor="#4f4f4f">
                             
                             <StackLayout x:DataType="model:Ad"
                                      Margin="10,5,15,5" VerticalOptions="Center">
@@ -44,9 +44,9 @@
                             FontSize="Medium" TextColor="White"/>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding AdSkills}" HorizontalOptions="Start" TextColor="#a3a3a3" FontSize="12"/>
+                                    <Label Text="{Binding AdSkills}" HorizontalOptions="Start" TextColor="White" FontSize="12" Opacity="30"/>
                                     <Image Source="person.png" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="{Binding CompanyInternSpots}" HorizontalOptions="End" TextColor="#a3a3a3" FontSize="12"/>
+                                    <Label Text="{Binding CompanyInternSpots}" HorizontalOptions="End" TextColor="White" FontSize="12"/>
                                 </StackLayout>
 
                                 <StackLayout.GestureRecognizers>

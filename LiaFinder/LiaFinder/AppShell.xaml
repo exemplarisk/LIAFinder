@@ -4,7 +4,7 @@
        xmlns:local="clr-namespace:LiaFinder.Views"
        Title="LiaFinder"
        x:Class="LiaFinder.AppShell"
-       BackgroundColor="#232F34">
+       BackgroundColor="#000000">
 
     <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
 

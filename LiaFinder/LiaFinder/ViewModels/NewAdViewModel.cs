@@ -28,7 +28,6 @@ namespace LiaFinder.ViewModels
         private bool ValidateSave()
         {
             return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description)
                 && !String.IsNullOrWhiteSpace(companyname)
                 && !String.IsNullOrWhiteSpace(adtitle)
                 && !String.IsNullOrWhiteSpace(adskills)
@@ -41,12 +40,6 @@ namespace LiaFinder.ViewModels
         {
             get => text;
             set => SetProperty(ref text, value);
-        }
-
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
         }
 
         public string CompanyName
