@@ -47,7 +47,7 @@ namespace LiaFinder.Views
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Yes", "Cancel");
+                var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Ok", "Cancel");
 
                 if(result)
                 {

@@ -9,13 +9,15 @@
 
             <Label Text="{Binding Text}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="{Binding AdTitle}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
+            <Label Text="{Binding AdSkills}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
             <Label Text="{Binding CompanyLocation}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
+
             <StackLayout Orientation="Horizontal" Spacing="-325">
             <Label Text="{Binding CompanyInternSpots}" FontSize="Small" HorizontalOptions="CenterAndExpand" TextColor="White"/>
                 <Image Source="person.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Frame Padding="50" Margin="40" BackgroundColor="#272727" BorderColor="#272727" VerticalOptions="End" HasShadow="False">
-                <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center"></Button>
+                <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
             </Frame>
     </StackLayout>
     </Frame>

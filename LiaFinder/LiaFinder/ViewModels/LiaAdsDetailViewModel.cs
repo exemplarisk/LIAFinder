@@ -75,7 +75,7 @@ namespace LiaFinder.ViewModels
             }
         }
        
-        public async void LoadAdId(string id)
+        public void LoadAdId(string id)
         {
             try
             {

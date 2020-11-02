@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using LiaFinder.ViewModels;
 using System;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace LiaFinder.Views
 {
@@ -11,25 +12,15 @@ namespace LiaFinder.Views
             InitializeComponent();
             BindingContext = new LiaAdsDetailViewModel();
         }
-        private async void OnApplyButtonClicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ContentPage
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                Content = new StackLayout
+                var result = await DisplayAlert("Congratulations!", "Your request has been sent", "Ok", "Cancel");
+
+                if (result)
                 {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-
-                           Text = "Thank you for Applying to x! Press button below to keep looking for lia."
-                        },
-                        new Button {
-
-                            Text = "RETURN"
-                            
-                        }
-                        
-                    }
+                    await Shell.Current.GoToAsync("liapage");
                 }
             });
         }

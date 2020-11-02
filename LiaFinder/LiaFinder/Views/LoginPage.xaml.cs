@@ -67,7 +67,7 @@ namespace LiaFinder.Views
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await DisplayAlert("Error", "Invalid Login or password..", "Yes", "Back");
+                    var result = await DisplayAlert("Error", "Invalid Login or password", "Ok", "Cancel");
 
                     if(result)
                     {

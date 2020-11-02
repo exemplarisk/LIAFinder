@@ -7,8 +7,10 @@
             <StackLayout Spacing="80">
                 <Image Source="https://i.ibb.co/b7ZpshK/Icon-Orange.png" HorizontalOptions="Center"></Image>
                 <StackLayout Grid.Row="0" Padding="10" Spacing="30">
-                    <Entry Placeholder="Username" PlaceholderColor="#a6a6a6" x:Name="Entry_Username" TextColor="#a6a6a6" />
+
+                    <Entry Placeholder="Username" PlaceholderColor="#a6a6a6" x:Name="Entry_Username" TextColor="#a6a6a6"/>
                     <Entry Placeholder="Password" PlaceholderColor="#a6a6a6" x:Name="Entry_Password" IsPassword="True" Grid.Row="1" TextColor="#a6a6a6"/>
+                    
                 </StackLayout>
                 <StackLayout>
                     <Button Text="Login" Grid.Row="2" Clicked="Login" BackgroundColor="#F9AA33" TextColor="black" FontSize="Medium" Opacity="74"/>

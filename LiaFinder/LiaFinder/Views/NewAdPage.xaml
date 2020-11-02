@@ -9,22 +9,22 @@
             <StackLayout Spacing="3" Padding="15">
 
                 <Label Text="Company" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Editor Text="{Binding CompanyName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
+                <Editor Text="{Binding CompanyName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#a6a6a6" />
 
                 <Label Text="Title" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Editor Text="{Binding AdTitle, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
+                <Editor Text="{Binding AdTitle, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#a6a6a6" />
 
                 <Label Text="Wanted Skills" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
+                <Editor Text="{Binding AdSkills, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#a6a6a6" />
 
                 <Label Text="Company Location" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Editor Text="{Binding CompanyLocation, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
+                <Editor Text="{Binding CompanyLocation, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#a6a6a6" />
 
                 <Label Text="Intern Spots" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Editor Text="{Binding CompanyInternSpots, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#F9AA33" />
+                <Editor Text="{Binding CompanyInternSpots, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" TextColor="#a6a6a6" />
 
                 <Label Text="Text" FontSize="Medium" TextColor="#a6a6a6"/>
-                <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" TextColor="#F9AA33" />
+                <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" TextColor="#a6a6a6" />
 
                 <Frame VerticalOptions="EndAndExpand" BackgroundColor="#272727" BorderColor="#272727" HasShadow="False">
                     <StackLayout Orientation="Horizontal" Spacing="60">
