@@ -3,22 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LiaAdsDetailPage"
              Title="{Binding CompanyName}">
-
+    <ScrollView>
     <Frame BackgroundColor="#272727">
-    <StackLayout Spacing="50" Margin="20">
+    <StackLayout Spacing="40" Margin="1">
 
+                <Label Text="{Binding AdTitle}" FontSize="30" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"/>
             <Label Text="{Binding Text}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding AdTitle}" FontSize="Small" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding AdSkills}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="{Binding CompanyLocation}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
 
-            <StackLayout Orientation="Horizontal" Spacing="-310">
-            <Label Text="{Binding CompanyInternSpots}" FontSize="Medium" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <StackLayout>
+                <Label Text="Wanted Skills" FontSize="Large" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"/>
+                <Label Text="{Binding AdSkills}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
+                </StackLayout>
+
+
+                <StackLayout>
+                <Label Text="Location" FontSize="Large" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"/>
+                <Label Text="{Binding CompanyLocation}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
+                </StackLayout>
+        
+                <StackLayout Orientation="Horizontal" Spacing="-345">
+                <Label Text="{Binding CompanyInternSpots}" FontSize="Medium" HorizontalOptions="CenterAndExpand" TextColor="White"/>
                 <Image Source="person_24dp.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
-            <Frame Padding="50" Margin="40" BackgroundColor="#272727" BorderColor="#272727" VerticalOptions="End" HasShadow="False">
+            <Frame Padding="30" Margin="40" BackgroundColor="#272727" HasShadow="False">
                 <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
             </Frame>
     </StackLayout>
     </Frame>
+    </ScrollView>
 </ContentPage>

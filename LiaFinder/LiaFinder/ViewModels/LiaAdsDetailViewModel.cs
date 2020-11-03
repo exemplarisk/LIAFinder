@@ -93,6 +93,7 @@ namespace LiaFinder.ViewModels
                     AdSkills = myQuery.AdSkills;
                     CompanyLocation = myQuery.CompanyLocation;
                     CompanyInternSpots = myQuery.CompanyInternSpots;
+                    AdTitle = myQuery.AdTitle;
                 } 
             }
             catch(Exception ex)
