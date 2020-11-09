@@ -21,12 +21,12 @@
                 <Label Text="{Binding CompanyLocation}" FontSize="Medium" HorizontalOptions="Center" TextColor="White"/>
                 </StackLayout>
         
-                <StackLayout Orientation="Horizontal" Spacing="-345">
+                <StackLayout Orientation="Horizontal" Spacing="-330">
                 <Label Text="{Binding CompanyInternSpots}" FontSize="Medium" HorizontalOptions="CenterAndExpand" TextColor="White"/>
                 <Image Source="person_24dp.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Frame Padding="30" Margin="40" BackgroundColor="#272727" HasShadow="False">
-                <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
+                    <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Command="{Binding ApplyCommand}"></Button>
             </Frame>
     </StackLayout>
     </Frame>

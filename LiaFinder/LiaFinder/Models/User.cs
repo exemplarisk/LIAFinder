@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SQLite;
+using System;
 namespace LiaFinder.Models
 {
     public class User
     { 
+        [PrimaryKey]
         public Guid UserId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
@@ -14,6 +16,5 @@ namespace LiaFinder.Models
 
         public bool isLoggedIn { get; set; } = false;
 
-        public Guid Id = Guid.NewGuid();
     }
 }

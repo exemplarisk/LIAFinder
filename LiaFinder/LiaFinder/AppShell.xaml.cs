@@ -14,6 +14,8 @@ namespace LiaFinder
             Routing.RegisterRoute("registrationpage", typeof(RegistrationPage));
             Routing.RegisterRoute("newadpage", typeof(NewAdPage));
             Routing.RegisterRoute("adminpage", typeof(AdminPage));
+            Routing.RegisterRoute("homepage", typeof(HomePage));
+
         }
     }
 }

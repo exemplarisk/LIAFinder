@@ -21,10 +21,9 @@ namespace LiaFinder.Views
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            //listView.ItemsSource = await App.Database.GetUserAsync();
         }
 
         async void Register(object sender, EventArgs e)
@@ -38,26 +37,33 @@ namespace LiaFinder.Views
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
-            var myQuery = db.Table<User>().Where(u => u.UserName.Equals(Entry_Username.Text) && u.Password.Equals(Entry_Password.Text)).FirstOrDefault();
+            var user = db.Table<User>().Where(u => u.UserName.Equals(Entry_Username.Text) && u.Password.Equals(Entry_Password.Text)).FirstOrDefault();
 
-                if (myQuery != null)    
+                if (user != null)    
                 {
-                    CurrentUserId = myQuery.UserId;
+                    CurrentUserId = user.UserId;
 
-                    var checkRole = MyHomePage.CheckRole(myQuery);
+                    user.isLoggedIn = true;
+                    
+                    
+                    var updatedRows = db.Update(user, typeof(User));
 
-                    var checkIfAdmin = MyHomePage.CheckIfAdmin(myQuery);
 
-                    if(checkRole == true)
+                    var isCompany = MyHomePage.CheckRole(user);
+
+                    var isSchool = MyHomePage.CheckIfAdmin(user);
+
+                    if(isCompany)
                     {
-                        await Shell.Current.GoToAsync("homepage");
+                           await Shell.Current.GoToAsync("homepage");
                     }
-                    else if(checkIfAdmin == true)
+
+                    else if(isSchool)
                     {
-                    await Shell.Current.GoToAsync("adminpage");
+                        await Shell.Current.GoToAsync("adminpage");
                     }
+
                     else
-                
                     {
                         await Shell.Current.GoToAsync("liapage");
                     } 

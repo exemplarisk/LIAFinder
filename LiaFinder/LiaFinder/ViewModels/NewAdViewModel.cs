@@ -10,29 +10,21 @@ namespace LiaFinder.ViewModels
     public class NewAdViewModel : BaseViewModel
     {
         private string text;
-        private string description;
         private string companyname;
         private string adtitle;
         private string adskills;
         private string companylocation;
         private string companyinternspots;
 
+
+        public Command SaveCommand { get; }
+        public Command CancelCommand { get; }
         public NewAdViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
-        }
-
-        private bool ValidateSave()
-        {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(companyname)
-                && !String.IsNullOrWhiteSpace(adtitle)
-                && !String.IsNullOrWhiteSpace(adskills)
-                && !String.IsNullOrWhiteSpace(companylocation)
-                && !String.IsNullOrWhiteSpace(companyinternspots);
         }
 
 
@@ -74,14 +66,23 @@ namespace LiaFinder.ViewModels
         }
 
 
-        public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
-
         private async void OnCancel()
         {
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
         }
+
+
+        private bool ValidateSave()
+        {
+            return !String.IsNullOrWhiteSpace(text)
+                && !String.IsNullOrWhiteSpace(companyname)
+                && !String.IsNullOrWhiteSpace(adtitle)
+                && !String.IsNullOrWhiteSpace(adskills)
+                && !String.IsNullOrWhiteSpace(companylocation)
+                && !String.IsNullOrWhiteSpace(companyinternspots);
+        }
+
 
         private async void OnSave()
         {

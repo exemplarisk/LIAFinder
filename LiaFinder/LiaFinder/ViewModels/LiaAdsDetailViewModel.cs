@@ -20,6 +20,13 @@ namespace LiaFinder.ViewModels
         private string companyinternspots;
 
 
+        public Command ApplyCommand { get; }
+
+        public LiaAdsDetailViewModel()
+        {
+            ApplyCommand = new Command(SaveApplication);
+        }
+
         public string Id { get; set; }
 
         public string Text
@@ -75,11 +82,33 @@ namespace LiaFinder.ViewModels
             }
         }
        
+        public static void SaveApplication()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
+            var db = new SQLiteConnection(dbpath);
+            db.CreateTable<Models.Application>();
+
+            
+            var query = db.Table<User>().Where(u => u != null && u.isLoggedIn.Equals(true)).FirstOrDefault();
+
+            if(query != null)
+            {
+                Models.Application application = new Models.Application()
+                {
+                    //TODO: Wire things up here.
+                    UserName = query.UserName,
+                    Email = query.Email
+
+                };
+
+                db.Insert(application);
+            }
+        }
+
         public void LoadAdId(string id)
         {
             try
             {
-
                 var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
                 var db = new SQLiteConnection(dbpath);
 

@@ -38,42 +38,5 @@ namespace LiaFinder.Views
             }
             return true;
         }
-
-        async void OnClicked_Logout(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new LoginPage());
-            App.Current.MainPage = new NavigationPage(new LoginPage());
-        }
-
-        async void GetCompany( object sender , EventArgs e)
-        {
-            App.Current.MainPage = new LiaAdsPage();
-        }
-
-        //async void OnClicked_AddCompany(object sender, EventArgs e)
-        //{
-        //    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-        //    var db = new SQLiteConnection(dbpath);
-        //    db.CreateTable<Ad>();
-
-        //    try
-        //    {
-        //        var companyAd = new Ad()
-        //        {
-        //            UserId = Id,
-        //            CompanyName = Company_Name.Text,
-        //            CompanySubject = Company_Subject.Text,
-        //            CompanyinternSpots = int.Parse(Company_InternSpots.Text),
-        //            CompanyLocation = Company_Location.Text,
-        //        };
-            
-        //        db.Insert(companyAd);
-        //        listView.ItemsSource = await App.Database.GetCompanyAsync();
-        //    }
-        //    catch(Exception x)
-        //    {
-        //        Console.WriteLine(x);
-        //    }
-        //}
     }
 }

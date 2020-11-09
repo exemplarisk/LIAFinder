@@ -15,9 +15,18 @@ namespace LiaFinder
 
             _database.CreateTableAsync<User>().Wait();
             _database.CreateTableAsync<Ad>().Wait();
+            _database.CreateTableAsync<Application>().Wait();
+
         }
 
-        // Changed this from Student to Ad, not used anywhere
+        //TODO: Add function to insert Application to DB
+
+        public async Task<bool> InsertApplicationAsync(Application application)
+        {
+            await _database.InsertAsync(application);
+            return await Task.FromResult(true);
+        }
+
         public async Task<List<Ad>> GetAdsAsync()
         {
             return await _database.Table<Ad>().ToListAsync();
@@ -35,25 +44,9 @@ namespace LiaFinder
             return _database.InsertAsync(user);
         }
 
-
         public Task<List<User>> GetUserAsync()
         {
             return _database.Table<User>().ToListAsync();
-        }
-   
-        public bool LoginValidate(string userName, string password)
-        {
-            var data = _database.Table<User>();
-            var queryData = data.Where(x => x.UserName == userName && x.Password == password).FirstOrDefaultAsync();
-            
-            if(queryData != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

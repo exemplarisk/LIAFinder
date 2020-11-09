@@ -12,7 +12,7 @@ namespace LiaFinder.Views
         {
             InitializeComponent();
         }
-        void Onclicked_RegisterStudent(object sender, System.EventArgs e)
+        void Onclicked_RegisterStudent(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
@@ -24,7 +24,7 @@ namespace LiaFinder.Views
                 UserName = EntryUserName.Text,
                 Password = EntryUserPassword.Text,
                 Email = EntryUserEmail.Text,
-                isCompany = false,
+                isCompany = CompanyCheckBox.IsChecked,
                 isAdmin = false,
             };
 
@@ -55,6 +55,11 @@ namespace LiaFinder.Views
                 }
             });
                 
+        }
+
+        private void CompanyCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            CompanyCheckBox.IsChecked = true;
         }
     }
 }
