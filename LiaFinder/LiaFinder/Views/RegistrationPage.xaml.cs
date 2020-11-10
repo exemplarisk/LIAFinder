@@ -12,13 +12,13 @@ namespace LiaFinder.Views
         {
             InitializeComponent();
         }
-        void Onclicked_RegisterStudent(object sender, EventArgs e)
+        void Onclicked_RegisterUser(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
             db.CreateTable<User>();
 
-            var item = new User()
+            var user = new User()
             {
                 UserId = Id,
                 UserName = EntryUserName.Text,
@@ -30,7 +30,7 @@ namespace LiaFinder.Views
 
 
             // TODO: Make sure you can't register with empty credentials
-            var entry = item.ToString();
+            var entry = user.ToString();
 
             if (entry == null)
             {
@@ -42,7 +42,7 @@ namespace LiaFinder.Views
 
             else
             {
-                db.Insert(item);
+                db.Insert(user);
             }
 
             Device.BeginInvokeOnMainThread(async () =>

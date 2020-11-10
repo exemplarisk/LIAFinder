@@ -31,7 +31,7 @@ namespace LiaFinder.Views
 
             await Shell.Current.GoToAsync("registrationpage");
 
-         }
+        }
 
         async void Login(object sender, EventArgs e)
         {

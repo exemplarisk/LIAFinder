@@ -82,23 +82,21 @@ namespace LiaFinder.ViewModels
             }
         }
        
-        public static void SaveApplication()
+        public void SaveApplication()
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
             db.CreateTable<Models.Application>();
-
             
-            var query = db.Table<User>().Where(u => u != null && u.isLoggedIn.Equals(true)).FirstOrDefault();
+            var user = db.Table<User>().Where(u => u.isLoggedIn.Equals(true)).FirstOrDefault();
+            // var company = db.Table<Ad>().Where(c => c != null && c.CompanyName.Equals(name)).FirstOrDefault();
 
-            if(query != null)
+            if(user != null)
             {
                 Models.Application application = new Models.Application()
                 {
-                    //TODO: Wire things up here.
-                    UserName = query.UserName,
-                    Email = query.Email
-
+                    UserName = user.UserName,
+                    Email = user.Email
                 };
 
                 db.Insert(application);

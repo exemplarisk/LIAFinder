@@ -1,58 +1,42 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LiaFinder.Views.HomePage">
-    <ContentPage.Content>
-        <ScrollView>
-            
-        
-    <StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="LiaFinder.Views.HomePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <CollectionView x:Name="ApplicationsList"
+                ItemsSource="{Binding Applications}"
+                SelectionMode="None" HeightRequest="10" BackgroundColor="#272727">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="8"
+                      BackgroundColor="#272727">
 
-        <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
-                    <Grid.RowDefinitions >
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                
-            </Grid.RowDefinitions>
-            <Entry Placeholder="Company Name" x:Name="Company_Name" Grid.Row="0"/>
-            <Entry Placeholder="Company subject" x:Name="Company_Subject" Grid.Row="1"/>
-            <Entry Placeholder="Company intern spots" x:Name="Company_InternSpots" Grid.Row="2" />
-            <Entry Placeholder="Company Location" x:Name="Company_Location" Grid.Row="3"/>
-                    
+                    <Frame
+                            HeightRequest="130"
+                            Padding="0"
+                            IsClippedToBounds="True"
+                            BorderColor="#4f4f4f"
+                            CornerRadius="5"
+                            BackgroundColor="#4f4f4f">
 
+                        <StackLayout
+                                     Margin="10,5,15,5" VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding UserName}" FontSize="25" TextColor="White"/>
+
+                                <Image Source="ic_public_custom_48dp.png" HorizontalOptions="EndAndExpand"/>
+
+                            </StackLayout>
+                            <Label Text="{Binding Email}" 
+                            LineBreakMode="NoWrap"  
+                            FontSize="Medium" TextColor="White"/>
+                            <Label Text="{Binding Company}"/>
+                        </StackLayout>
+                    </Frame>
                 </Grid>
-
-
-                <!--<Button Text="Generate another companie and show all companies" Grid.Row="3" Clicked="OnClicked_AddCompany"/>-->
-
-                <!--<Button VerticalOptions="EndAndExpand" Text="Logout" Clicked="OnClicked_Logout" TextColor="#0077be"/>-->
-
-        
-
-
-        <ListView x:Name="listView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                                
-                            <Label Text="{Binding CompanyName}"
-                                TextColor="#f35e20" />
-                            <Label Text="{Binding CompanySubject}"
-                                HorizontalOptions="EndAndExpand"
-                                TextColor="#503026" />
-                            <Label Text="{Binding CompanyLocation}"/>
-                            <Label Text="{Binding CompanyinternSpots}"/>
-                                    <Label Text="{Binding UserId}"/>
-                                </StackLayout>
-     
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-
-    </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

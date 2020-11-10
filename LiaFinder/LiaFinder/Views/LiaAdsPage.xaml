@@ -9,11 +9,14 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddAdCommand}"/>
+        <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
         <local:LiaAdsViewModel/>
     </ContentPage.BindingContext>
+
+    
     <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"

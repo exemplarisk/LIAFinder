@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LiaFinder.Views.LiaAdsDetailPage"
-             Title="{Binding CompanyName}">
+             Title="{Binding CompanyName}" x:Name="CompanyName">
     <ScrollView>
     <Frame BackgroundColor="#272727">
     <StackLayout Spacing="40" Margin="1">
@@ -26,7 +26,7 @@
                 <Image Source="person_24dp.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Frame Padding="30" Margin="40" BackgroundColor="#272727" HasShadow="False">
-                    <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Command="{Binding ApplyCommand}"></Button>
+                    <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Clicked="Apply_To_Ad"></Button>
             </Frame>
     </StackLayout>
     </Frame>

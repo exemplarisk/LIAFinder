@@ -16,7 +16,6 @@ namespace LiaFinder
             _database.CreateTableAsync<User>().Wait();
             _database.CreateTableAsync<Ad>().Wait();
             _database.CreateTableAsync<Application>().Wait();
-
         }
 
         //TODO: Add function to insert Application to DB
@@ -25,6 +24,11 @@ namespace LiaFinder
         {
             await _database.InsertAsync(application);
             return await Task.FromResult(true);
+        }
+
+        public async Task<List<Application>> GetApplicationAsync()
+        {
+            return await _database.Table<Application>().ToListAsync();
         }
 
         public async Task<List<Ad>> GetAdsAsync()
