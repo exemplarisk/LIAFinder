@@ -54,7 +54,7 @@ namespace LiaFinder.ViewModels
             try
             {
                 Ads.Clear();
-                var ads = await App.Database.GetAdsAsync();
+                var ads = await Database.GetAds();
                 foreach (var ad in ads)
                 {
                     Ads.Add(ad);

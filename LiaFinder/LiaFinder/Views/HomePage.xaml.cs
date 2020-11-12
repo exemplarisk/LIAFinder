@@ -20,18 +20,11 @@ namespace LiaFinder.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            ApplicationsList.ItemsSource = await App.Database.GetApplicationAsync();
+            ApplicationsList.ItemsSource = await Database.GetApplicationAsync();
         }
 
         // fixa så att detta lägga i databas klassen eller??
-        public bool CheckRole(User user)
-        {
-            if(user.isCompany == true)
-            {
-                return true;
-            }
-            return false;
-        }
+        
 
         public bool CheckIfAdmin(User user)
         {

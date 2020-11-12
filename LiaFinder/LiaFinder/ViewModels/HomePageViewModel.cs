@@ -43,7 +43,7 @@ namespace LiaFinder.ViewModels
             {
                 Applications.Clear();
 
-                var applicatoins = await App.Database.GetApplicationAsync();
+                var applicatoins = await Database.GetApplicationAsync();
                 foreach(var application in Applications)
                 {
                     Applications.Add(application);

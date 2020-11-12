@@ -11,12 +11,12 @@ namespace LiaFinder.Views
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetUserAsync();
+        //protected override async void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    listView.ItemsSource = await Database.GetUserAsync();
 
-            //måste fixa /kolla vem som är inloggad
-        }
+        //    //måste fixa /kolla vem som är inloggad
+        //}
     }
 }

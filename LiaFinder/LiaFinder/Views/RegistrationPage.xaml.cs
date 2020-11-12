@@ -14,6 +14,7 @@ namespace LiaFinder.Views
         }
         void Onclicked_RegisterUser(object sender, EventArgs e)
         {
+            //TODO: Remove this and write function to insert new user in database in database.cs
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
             var db = new SQLiteConnection(dbpath);
             db.CreateTable<User>();

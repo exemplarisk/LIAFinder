@@ -1,56 +1,107 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using LiaFinder.Models;
 using SQLite;
 
 namespace LiaFinder
 {
-    public class Database
+    public static class Database
     {
-        readonly SQLiteAsyncConnection _database;
+        #region Private Fields
+        private static SQLiteConnection _db = null;
+        private static string _dbPath = null;
 
-        public Database(string dbPath)
+        private static SQLiteConnection Db
         {
-            _database = new SQLiteAsyncConnection(dbPath);
+            get
+            {
+                if (_db == null)
+                {
+                    _db = new SQLiteConnection(DbPath);
+                    CreateDefaultTables();
+                }
 
-            _database.CreateTableAsync<User>().Wait();
-            _database.CreateTableAsync<Ad>().Wait();
-            _database.CreateTableAsync<Application>().Wait();
+                return _db;
+            }
+        }
+        #endregion
+
+        #region Private Methods
+        private static string DbPath
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(_dbPath))
+                {
+                    _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
+                }
+
+                return _dbPath;
+            }
         }
 
+        private static void CreateDefaultTables()
+        {
+            _db.CreateTable<User>();
+            _db.CreateTable<Ad>();
+            _db.CreateTable<Application>();
+        }
+        #endregion
+
+
+        #region Public Methods
+        public static void UpdateUser(User user)
+        {
+            Db.Update(user);
+        }
+
+        public static User GetLoggedInCompany(Guid id)
+        {
+            return Db.Table<User>().Where(u => u.isCompany.Equals(true) && u.isLoggedIn.Equals(true) && u.UserId.Equals(id)).FirstOrDefault();
+        }
+
+        public static User ValidateUserLogin(string username, string password)
+        {
+            var user = Db.Table<User>().Where(u => u.UserName.Equals(username) && u.Password.Equals(password)).FirstOrDefault();
+
+            if(user == null)
+            {
+                return null;
+            }
+
+            return user;
+
+        }
         //TODO: Add function to insert Application to DB
 
-        public async Task<bool> InsertApplicationAsync(Application application)
+        public static void InsertAd(Ad ad)
         {
-            await _database.InsertAsync(application);
-            return await Task.FromResult(true);
+            Db.Insert(ad);
         }
 
-        public async Task<List<Application>> GetApplicationAsync()
+        public static void InsertApplicationAsync(Application application)
         {
-            return await _database.Table<Application>().ToListAsync();
+                Db.Insert(application);
         }
 
-        public async Task<List<Ad>> GetAdsAsync()
+        public static Task<List<Application>> GetApplicationAsync()
         {
-            return await _database.Table<Ad>().ToListAsync();
-        }
- 
-        public async Task<bool> AddItemAsync(Ad ad)
-        {
-            await _database.InsertAsync(ad);
+            var applications = Db.Table<Application>().ToList();
 
-            return await Task.FromResult(true);
+            return Task.FromResult(applications);
         }
 
-        public Task<int> SaveItemAsync(User user)
+        public static Task<List<Ad>> GetAds()
         {
-            return _database.InsertAsync(user);
+            var ads = Db.Table<Ad>().ToList();
+            return Task.FromResult(ads);
         }
-
-        public Task<List<User>> GetUserAsync()
-        {
-            return _database.Table<User>().ToListAsync();
-        }
+        #endregion
+        //public Task<List<User>> GetUserAsync()
+        //{
+        //    return _db.Table<User>().ToListAsync();
+        //}
     }
 }

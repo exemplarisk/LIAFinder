@@ -10,10 +10,8 @@ namespace LiaFinder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        
-        HomePage MyHomePage = new HomePage();
 
-        public Guid CurrentUserId;
+        public static Guid CurrentUserId;
 
         public LoginPage()
         {
@@ -35,9 +33,8 @@ namespace LiaFinder.Views
 
         async void Login(object sender, EventArgs e)
         {
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
-            var user = db.Table<User>().Where(u => u.UserName.Equals(Entry_Username.Text) && u.Password.Equals(Entry_Password.Text)).FirstOrDefault();
+
+            var user = Database.ValidateUserLogin(Entry_Username.Text, Entry_Password.Text);
 
                 if (user != null)    
                 {
@@ -45,20 +42,14 @@ namespace LiaFinder.Views
 
                     user.isLoggedIn = true;
                     
-                    
-                    var updatedRows = db.Update(user, typeof(User));
+                    Database.UpdateUser(user);
 
-
-                    var isCompany = MyHomePage.CheckRole(user);
-
-                    var isSchool = MyHomePage.CheckIfAdmin(user);
-
-                    if(isCompany)
+                    if(user.isCompany)
                     {
                            await Shell.Current.GoToAsync("homepage");
                     }
 
-                    else if(isSchool)
+                    else if(user.isAdmin)
                     {
                         await Shell.Current.GoToAsync("adminpage");
                     }

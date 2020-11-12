@@ -4,6 +4,7 @@ using LiaFinder.Models;
 using LiaFinder;
 using System.IO;
 using SQLite;
+using LiaFinder.Views;
 
 namespace LiaFinder.ViewModels
 {
@@ -14,7 +15,8 @@ namespace LiaFinder.ViewModels
         private string adskills;
         private string companylocation;
         private string companyinternspots;
-
+        private Guid userid;
+        private User _company;
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
@@ -26,6 +28,17 @@ namespace LiaFinder.ViewModels
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
+        public Guid UserId
+        {
+            get
+            {
+                if(userid != null)
+                {
+                    userid = LoginPage.CurrentUserId;
+                }
+                return userid;
+            }
+        }
 
         public string Text
         {
@@ -58,6 +71,19 @@ namespace LiaFinder.ViewModels
 
         }
 
+        public User Company
+        { 
+            get
+            {
+                if(_company == null)
+                {
+                    _company = Database.GetLoggedInCompany(UserId);
+                }
+
+                return _company;
+            }
+        }
+
 
         private async void OnCancel()
         {
@@ -73,29 +99,21 @@ namespace LiaFinder.ViewModels
                 && !String.IsNullOrWhiteSpace(adskills)
                 && !String.IsNullOrWhiteSpace(companylocation)
                 && !String.IsNullOrWhiteSpace(companyinternspots);
-        }
-
-
+        }       
         private async void OnSave()
         {
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
-            var company = db.Table<User>().Where(u => u.isCompany.Equals(true) && u.isLoggedIn.Equals(true)).FirstOrDefault();
-
-            db.CreateTable<Ad>();
-
             Ad newAd = new Ad()
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                CompanyName = company.UserName,
+                CompanyName = Company.UserName,
                 AdTitle = AdTitle,
                 AdSkills = AdSkills,
                 CompanyLocation = CompanyLocation,
                 CompanyInternSpots = CompanyInternSpots
             };
 
-            db.Insert(newAd);
+            Database.InsertAd(newAd);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
