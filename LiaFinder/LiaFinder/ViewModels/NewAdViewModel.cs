@@ -10,7 +10,6 @@ namespace LiaFinder.ViewModels
     public class NewAdViewModel : BaseViewModel
     {
         private string text;
-        private string companyname;
         private string adtitle;
         private string adskills;
         private string companylocation;
@@ -32,12 +31,6 @@ namespace LiaFinder.ViewModels
         {
             get => text;
             set => SetProperty(ref text, value);
-        }
-
-        public string CompanyName
-        {
-            get => companyname;
-            set => SetProperty(ref companyname, value);
         }
 
         public string AdTitle
@@ -76,7 +69,6 @@ namespace LiaFinder.ViewModels
         private bool ValidateSave()
         {
             return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(companyname)
                 && !String.IsNullOrWhiteSpace(adtitle)
                 && !String.IsNullOrWhiteSpace(adskills)
                 && !String.IsNullOrWhiteSpace(companylocation)
@@ -87,14 +79,16 @@ namespace LiaFinder.ViewModels
         private async void OnSave()
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);  
+            var db = new SQLiteConnection(dbpath);
+            var company = db.Table<User>().Where(u => u.isCompany.Equals(true) && u.isLoggedIn.Equals(true)).FirstOrDefault();
+
             db.CreateTable<Ad>();
 
             Ad newAd = new Ad()
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                CompanyName = CompanyName,
+                CompanyName = company.UserName,
                 AdTitle = AdTitle,
                 AdSkills = AdSkills,
                 CompanyLocation = CompanyLocation,
@@ -102,7 +96,6 @@ namespace LiaFinder.ViewModels
             };
 
             db.Insert(newAd);
-            //listView.ItemsSource = await App.Database.GetCompanyAsync();
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
