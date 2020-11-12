@@ -8,7 +8,6 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}"/>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiaFinder.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -11,20 +12,27 @@ namespace LiaFinder.ViewModels
 {
     public class HomePageViewModel : BaseViewModel
     {
-        public ObservableCollection<Application> Applications { get; }
+        public ObservableCollection<Models.Application> Applications { get; }
         public Command LoadApplicationsCommand { get; }
+        public Command AddAdCommand { get; }
 
         public HomePageViewModel()
         {
-            Applications = new ObservableCollection<Application>();
+            Applications = new ObservableCollection<Models.Application>();
 
             LoadApplicationsCommand = new Command(async () => await ExecuteLoadApplicationsCommand());
+            AddAdCommand = new Command<Ad>(NavigateToNewAdPage);
         }
 
         public async void OnAppearing()
         {
             await ExecuteLoadApplicationsCommand();
             IsBusy = true;
+        }
+
+        private async void NavigateToNewAdPage(object obj)
+        {
+            await Shell.Current.GoToAsync("newadpage");
         }
 
         async Task ExecuteLoadApplicationsCommand()

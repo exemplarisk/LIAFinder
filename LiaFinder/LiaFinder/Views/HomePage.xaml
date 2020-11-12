@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="LiaFinder.Views.HomePage">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddAdCommand}"/>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
     <CollectionView x:Name="ApplicationsList"
