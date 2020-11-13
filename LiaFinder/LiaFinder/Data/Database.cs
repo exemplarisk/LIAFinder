@@ -113,11 +113,11 @@ namespace LiaFinder
 
         public static Task<List<Application>> GetApplicationAsync(Guid id)
         {
-            var x = GetCurrentUser(id);
+            var company = GetCurrentUser(id);
 
-            var y = x.UserName;
+            var companyName = company.UserName;
 
-            var applications = Db.Table<Application>().Where(a => a.Company.Equals(y)).ToList();
+            var applications = Db.Table<Application>().Where(a => a.Company.Equals(companyName)).ToList();
 
             return Task.FromResult(applications);
         }
