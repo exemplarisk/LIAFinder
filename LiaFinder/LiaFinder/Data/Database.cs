@@ -50,7 +50,6 @@ namespace LiaFinder
         }
         #endregion
 
-
         #region Public Methods
         public static void UpdateUser(User user)
         {
@@ -59,7 +58,12 @@ namespace LiaFinder
 
         public static User GetLoggedInCompany(Guid id)
         {
-            return Db.Table<User>().Where(u => u.isCompany.Equals(true) && u.isLoggedIn.Equals(true) && u.UserId.Equals(id)).FirstOrDefault();
+            return Db.Table<User>().Where(u => u.UserId.Equals(id)).FirstOrDefault();
+        }
+
+        public static void InsertNewUser(User user)
+        {
+            Db.Insert(user);
         }
 
         public static User ValidateUserLogin(string username, string password)
@@ -81,7 +85,9 @@ namespace LiaFinder
             Db.Insert(ad);
         }
 
-        public static void InsertApplicationAsync(Application application)
+
+        //TODO: Should this be implemented somewhere? Probably...
+        public static void InsertApplication(Application application)
         {
                 Db.Insert(application);
         }
@@ -99,9 +105,5 @@ namespace LiaFinder
             return Task.FromResult(ads);
         }
         #endregion
-        //public Task<List<User>> GetUserAsync()
-        //{
-        //    return _db.Table<User>().ToListAsync();
-        //}
     }
 }

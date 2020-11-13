@@ -14,11 +14,6 @@ namespace LiaFinder.Views
         }
         void Onclicked_RegisterUser(object sender, EventArgs e)
         {
-            //TODO: Remove this and write function to insert new user in database in database.cs
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
-            db.CreateTable<User>();
-
             var user = new User()
             {
                 UserId = Id,
@@ -41,7 +36,8 @@ namespace LiaFinder.Views
 
             else
             {
-                db.Insert(user);
+                Database.InsertNewUser(user);
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Ok", "Cancel");
@@ -54,6 +50,7 @@ namespace LiaFinder.Views
             }
         }
 
+        // Used in RegistrationPage.xaml
         private void CompanyCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             CompanyCheckBox.IsChecked = true;
