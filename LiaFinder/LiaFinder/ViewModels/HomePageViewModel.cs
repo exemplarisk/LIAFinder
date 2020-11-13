@@ -1,4 +1,5 @@
 ﻿using LiaFinder.Models;
+using LiaFinder.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,7 +44,7 @@ namespace LiaFinder.ViewModels
             {
                 Applications.Clear();
 
-                var applicatoins = await Database.GetApplicationAsync();
+                var applicatoins = await Database.GetApplicationAsync(LoginPage.CurrentUserId);
                 foreach(var application in Applications)
                 {
                     Applications.Add(application);

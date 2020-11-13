@@ -88,7 +88,6 @@ namespace LiaFinder
             }
 
             return user;
-
         }
 
         public static bool LogoutUser(Guid id)
@@ -107,15 +106,18 @@ namespace LiaFinder
             Db.Insert(ad);
         }
 
-        //TODO: Should this be implemented somewhere? Probably...
         public static void InsertApplication(Application application)
         {
            Db.Insert(application);
         }
 
-        public static Task<List<Application>> GetApplicationAsync()
+        public static Task<List<Application>> GetApplicationAsync(Guid id)
         {
-            var applications = Db.Table<Application>().ToList();
+            var x = GetCurrentUser(id);
+
+            var y = x.UserName;
+
+            var applications = Db.Table<Application>().Where(a => a.Company.Equals(y)).ToList();
 
             return Task.FromResult(applications);
         }

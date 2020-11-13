@@ -107,15 +107,14 @@ namespace LiaFinder.ViewModels
         }
        
         public void SaveApplication()
-        {
-            // TODO: Implement function to get the user who applied for the ad
-            
+        {   
             if(User != null)
             {
                 Models.Application application = new Models.Application()
                 {
                     UserName = User.UserName,
-                    Email = User.Email
+                    Email = User.Email,
+                    Company = CompanyName
                 };
 
                 Database.InsertApplication(application);
