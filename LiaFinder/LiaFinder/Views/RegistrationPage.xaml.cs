@@ -24,6 +24,9 @@ namespace LiaFinder.Views
                 isAdmin = false,
             };
 
+            var userName = user.UserName;
+            var isUserNameTaken = Database.IsUserAlreadyRegistered(userName);
+
             if (user.Email == null || 
                 user.Password == null || 
                 user.UserName == null)
@@ -31,6 +34,14 @@ namespace LiaFinder.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await DisplayAlert("Sorry, Can't do that", "You need to enter valid credentials", "Ok");
+                });
+            }
+            else if (isUserNameTaken)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Sorry, Can't do that", "This username is already in use, " +
+                        "please try another username", "Ok");
                 });
             }
 

@@ -66,6 +66,18 @@ namespace LiaFinder
             Db.Insert(user);
         }
 
+        public static bool IsUserAlreadyRegistered(string userName)
+        {
+            var isUserNameTaken = Db.Table<User>().Where(u => u.UserName.Equals(userName)).FirstOrDefault();
+
+            if(isUserNameTaken != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static User ValidateUserLogin(string username, string password)
         {
             var user = Db.Table<User>().Where(u => u.UserName.Equals(username) && u.Password.Equals(password)).FirstOrDefault();
