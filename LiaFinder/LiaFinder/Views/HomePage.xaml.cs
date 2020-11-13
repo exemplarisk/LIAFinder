@@ -38,22 +38,25 @@ namespace LiaFinder.Views
 
         private void Logout_Clicked(object sender, System.EventArgs e)
         {
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
+            //TODO: This should check the GetCurrentUser() in database.cs
+            var id = LoginPage.CurrentUserId;
 
-            var userToLogout = db.Table<User>().Where(u => u.isLoggedIn.Equals(true)).FirstOrDefault();
+            var userToLogout = Database.LogoutUser(id);
 
-            if (userToLogout != null)
+            if (userToLogout)
             {
-                userToLogout.isLoggedIn = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Shell.Current.GoToAsync("..");
+                });
             }
-
-            var updatedRows = db.Update(userToLogout, typeof(User));
-
-            Device.BeginInvokeOnMainThread(async () =>
+            else
             {
-                await Shell.Current.GoToAsync("..");
-            });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Something went wrong", "Could not perform the requested action", "Ok");
+                });
+            }
         }
     }
 }

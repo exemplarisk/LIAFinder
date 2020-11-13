@@ -91,6 +91,17 @@ namespace LiaFinder
 
         }
 
+        public static bool LogoutUser(Guid id)
+        {
+            var userToLogout = Db.Table<User>().Where(u => u.UserId.Equals(id)).FirstOrDefault();
+            if(userToLogout != null)
+            {
+                userToLogout.isLoggedIn = false;
+                return true;
+            }
+            return false;
+        }
+
         public static void InsertAd(Ad ad)
         {
             Db.Insert(ad);
