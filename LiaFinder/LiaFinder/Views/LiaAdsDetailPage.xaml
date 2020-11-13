@@ -26,7 +26,7 @@
                 <Image Source="person_24dp.png" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Frame Padding="30" Margin="40" BackgroundColor="#272727" HasShadow="False">
-                    <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Clicked="Apply_To_Ad"></Button>
+                    <Button Text="Apply" FontSize="Large" BackgroundColor="#F9AA33" HorizontalOptions="Center" Command="{Binding ApplyCommand}" Clicked="Apply_To_Ad"></Button>
             </Frame>
     </StackLayout>
     </Frame>

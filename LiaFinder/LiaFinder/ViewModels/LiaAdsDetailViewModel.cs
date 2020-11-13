@@ -4,21 +4,25 @@ using Xamarin.Forms;
 using System.IO;
 using SQLite;
 using LiaFinder.Models;
+using LiaFinder.Views;
 
 namespace LiaFinder.ViewModels
 {
     [QueryProperty(nameof(AdId), nameof(AdId))]
     public class LiaAdsDetailViewModel : BaseViewModel
     {
-        
-        private string adId;
-        private string text;
-        private string companyname;
-        private string adtitle;
-        private string companylocation;
-        private string adskills;
-        private string companyinternspots;
+        #region Private Attributes
+        private Guid _userid;
+        private string _adId;
+        private string _text;
+        private string _companyname;
+        private string _adtitle;
+        private string _companylocation;
+        private string _adskills;
+        private string _companyinternspots;
 
+        private User _user;
+        #endregion
 
         public Command ApplyCommand { get; }
 
@@ -29,77 +33,92 @@ namespace LiaFinder.ViewModels
 
         public string Id { get; set; }
 
+        public Guid UserId
+        {
+            get
+            {
+                if(_userid != null)
+                {
+                    _userid = LoginPage.CurrentUserId;
+                }
+                return _userid;
+            }
+        }
+
+        public User User
+        {
+            get
+            {
+                if(_user == null)
+                {
+                    _user = Database.GetCurrentUser(UserId);
+                }
+                return _user;
+            }
+        }
+
         public string Text
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => _text;
+            set => SetProperty(ref _text, value);
         }
 
         public string CompanyName
         {
-            get => companyname;
-            set => SetProperty(ref companyname, value);
+            get => _companyname;
+            set => SetProperty(ref _companyname, value);
         }
         public string AdTitle
         {
-            get => adtitle;
-            set => SetProperty(ref adtitle, value);
+            get => _adtitle;
+            set => SetProperty(ref _adtitle, value);
         }
 
         public string CompanyLocation
         {
-            get => companylocation;
-            set => SetProperty(ref companylocation, value);
+            get => _companylocation;
+            set => SetProperty(ref _companylocation, value);
         }
 
         public string AdSkills
         {
-            get => adskills;
-            set => SetProperty(ref adskills, value);
+            get => _adskills;
+            set => SetProperty(ref _adskills, value);
         }
 
         public string CompanyInternSpots
         {
-            get => companyinternspots;
-            set => SetProperty(ref companyinternspots, value);
+            get => _companyinternspots;
+            set => SetProperty(ref _companyinternspots, value);
         }
 
-        // TODO
-
-        // Implement logic to get values for newly implemented attributes
-        // In Ad class.
 
         public string AdId
         {
             get
             {
-                return adId;
+                return _adId;
             }
             set
             {
-                adId = value;
+                _adId = value;
                 LoadAdId(value);
             }
         }
        
         public void SaveApplication()
         {
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-            var db = new SQLiteConnection(dbpath);
-            db.CreateTable<Models.Application>();
+            // TODO: Implement function to get the user who applied for the ad
             
-            var user = db.Table<User>().Where(u => u.isLoggedIn.Equals(true)).FirstOrDefault();
-            // var company = db.Table<Ad>().Where(c => c != null && c.CompanyName.Equals(name)).FirstOrDefault();
-
-            if(user != null)
+            if(User != null)
             {
                 Models.Application application = new Models.Application()
                 {
-                    UserName = user.UserName,
-                    Email = user.Email
+                    UserName = User.UserName,
+                    Email = User.Email
                 };
 
-                db.Insert(application);
+                Database.InsertApplication(application);
             }
         }
 
@@ -107,20 +126,21 @@ namespace LiaFinder.ViewModels
         {
             try
             {
+                // TODO: Should change this aswell
                 var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
                 var db = new SQLiteConnection(dbpath);
 
-                var myQuery = db.Table<Ad>().Where(u => u.Id.Equals(id)).FirstOrDefault();
+                var ad = db.Table<Ad>().Where(u => u.Id.Equals(id)).FirstOrDefault();
 
-                if (myQuery != null)
+                if (ad != null)
                 {
-                    Id = myQuery.Id;
-                    Text = myQuery.Text;
-                    CompanyName = myQuery.CompanyName;
-                    AdSkills = myQuery.AdSkills;
-                    CompanyLocation = myQuery.CompanyLocation;
-                    CompanyInternSpots = myQuery.CompanyInternSpots;
-                    AdTitle = myQuery.AdTitle;
+                    Id = ad.Id;
+                    Text = ad.Text;
+                    CompanyName = ad.CompanyName;
+                    AdSkills = ad.AdSkills;
+                    CompanyLocation = ad.CompanyLocation;
+                    CompanyInternSpots = ad.CompanyInternSpots;
+                    AdTitle = ad.AdTitle;
                 } 
             }
             catch(Exception ex)

@@ -77,7 +77,7 @@ namespace LiaFinder.ViewModels
             {
                 if(_company == null)
                 {
-                    _company = Database.GetLoggedInCompany(UserId);
+                    _company = Database.GetCurrentUser(UserId);
                 }
 
                 return _company;

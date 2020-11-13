@@ -56,7 +56,7 @@ namespace LiaFinder
             Db.Update(user);
         }
 
-        public static User GetLoggedInCompany(Guid id)
+        public static User GetCurrentUser(Guid id)
         {
             return Db.Table<User>().Where(u => u.UserId.Equals(id)).FirstOrDefault();
         }
@@ -78,18 +78,16 @@ namespace LiaFinder
             return user;
 
         }
-        //TODO: Add function to insert Application to DB
 
         public static void InsertAd(Ad ad)
         {
             Db.Insert(ad);
         }
 
-
         //TODO: Should this be implemented somewhere? Probably...
         public static void InsertApplication(Application application)
         {
-                Db.Insert(application);
+           Db.Insert(application);
         }
 
         public static Task<List<Application>> GetApplicationAsync()
