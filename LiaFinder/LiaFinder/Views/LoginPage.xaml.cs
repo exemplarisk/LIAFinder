@@ -31,6 +31,7 @@ namespace LiaFinder.Views
 
         }
 
+        // Used in LoginPage.Xaml
         async void Login(object sender, EventArgs e)
         {
 

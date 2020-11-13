@@ -66,6 +66,13 @@ namespace LiaFinder
             Db.Insert(user);
         }
 
+        //TODO: Implement feature to search based on Ad-Title
+
+        public static void SortByAdTitle(string title)
+        {
+            Db.Table<Ad>().Where(a => a.AdTitle.Contains(title)).ToList();
+        }
+
         public static bool IsUserAlreadyRegistered(string userName)
         {
             var isUserNameTaken = Db.Table<User>().Where(u => u.UserName.Equals(userName)).FirstOrDefault();
