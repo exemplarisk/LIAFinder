@@ -29,33 +29,29 @@ namespace LiaFinder.Views
                 isAdmin = false,
             };
 
-
-            // TODO: Make sure you can't register with empty credentials
-            var entry = user.ToString();
-
-            if (entry == null)
+            if (user.Email == null || 
+                user.Password == null || 
+                user.UserName == null)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await DisplayAlert("Whoops", "Something Went Wrong", "Ok");
+                    await DisplayAlert("Sorry, Can't do that", "You need to enter valid credentials", "Ok");
                 });
             }
 
             else
             {
                 db.Insert(user);
-            }
-
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Ok", "Cancel");
-
-                if(result)
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Shell.Current.GoToAsync("loginpage"); 
-                }
-            });
-                
+                    var result = await this.DisplayAlert("Congratulations", "User Registration Successful", "Ok", "Cancel");
+
+                    if (result)
+                    {
+                        await Shell.Current.GoToAsync("loginpage");
+                    }
+                });
+            }
         }
 
         private void CompanyCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
