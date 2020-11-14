@@ -9,14 +9,17 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
+        <ToolbarItem IconImageSource="person.png"/>
+
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
         <local:LiaAdsViewModel/>
     </ContentPage.BindingContext>
 
-    
-    <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <StackLayout>
+        <SearchBar x:Name="AdSearcher" Placeholder="Search ads" SearchButtonPressed="AdSearcher_SearchButtonPressed" BackgroundColor="#4f4f4f"/>
+        <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"
                 SelectionMode="None" HeightRequest="10" BackgroundColor="#272727">
@@ -64,4 +67,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>
+    </StackLayout>
 </ContentPage>

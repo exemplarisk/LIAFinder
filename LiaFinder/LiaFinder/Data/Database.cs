@@ -67,10 +67,12 @@ namespace LiaFinder
         }
 
         //TODO: Implement feature to search based on Ad-Title
-
-        public static void SortByAdTitle(string title)
+        public static List<Ad> SearchAd(string query)
         {
-            Db.Table<Ad>().Where(a => a.AdTitle.Contains(title)).ToList();
+            var search = Db.Table<Ad>().Where(a => a.AdTitle.Contains(query) 
+                                                || a.CompanyName.Contains(query)
+                                                || a.AdSkills.Contains(query)).ToList();
+            return search;
         }
 
         public static bool IsUserAlreadyRegistered(string userName)
