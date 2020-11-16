@@ -9,8 +9,11 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
+<<<<<<< HEAD
         <ToolbarItem IconImageSource="person.png" Clicked="ToolbarItem_Clicked"/>
 
+=======
+>>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
@@ -18,7 +21,11 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
+<<<<<<< HEAD
         <SearchBar x:Name="AdSearcher" Placeholder="Search ads" TextChanged="OnTextChanged"/>
+=======
+        <SearchBar x:Name="AdSearcher" Placeholder="Search ads..." TextChanged="OnTextChanged" BackgroundColor="#4f4f4f" TextColor="White"/>
+>>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
         <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"

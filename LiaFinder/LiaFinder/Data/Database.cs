@@ -74,7 +74,7 @@ namespace LiaFinder
             query = query.ToUpper();
             var ads = Db.Table<Ad>()?.ToList();
 
-            if (ads != null)
+            if(ads != null)
             {
                 foreach (var ad in ads)
                 {

@@ -51,6 +51,7 @@ namespace LiaFinder.Views
         {
             SearchBar searchBar = (SearchBar)sender;
             AdsListView.ItemsSource = Database.SearchAd(searchBar.Text);
+<<<<<<< HEAD
         }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -61,6 +62,8 @@ namespace LiaFinder.Views
             }
             else
                 AdSearcher.IsVisible = true;
+=======
+>>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
         }
     }
 }
