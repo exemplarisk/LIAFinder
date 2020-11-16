@@ -9,8 +9,6 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
-        <ToolbarItem IconImageSource="person.png"/>
-
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
