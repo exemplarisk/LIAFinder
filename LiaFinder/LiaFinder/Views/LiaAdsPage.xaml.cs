@@ -20,6 +20,8 @@ namespace LiaFinder.Views
         protected override void OnAppearing()
         {
             _viewModel.OnAppearing();
+            AdSearcher.IsVisible = false;
+            
         }
 
         private void Logout_Clicked(object sender, System.EventArgs e)
@@ -45,12 +47,20 @@ namespace LiaFinder.Views
         }
 
         // Used in LiaAdsPage To search ads
-        private void AdSearcher_SearchButtonPressed(object sender, EventArgs e)
+        private void OnTextChanged(object sender, EventArgs e)
         {
-            var query = AdSearcher.Text;
-            var adResults = Database.SearchAd(query);
+            SearchBar searchBar = (SearchBar)sender;
+            AdsListView.ItemsSource = Database.SearchAd(searchBar.Text);
+        }
 
-            AdsListView.ItemsSource = adResults;
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            if (AdSearcher.IsVisible)
+            {
+                AdSearcher.IsVisible = false;
+            }
+            else
+                AdSearcher.IsVisible = true;
         }
     }
 }

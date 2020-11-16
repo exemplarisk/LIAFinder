@@ -66,13 +66,29 @@ namespace LiaFinder
             Db.Insert(user);
         }
 
-        //TODO: Implement feature to search based on Ad-Title
         public static List<Ad> SearchAd(string query)
         {
-            var search = Db.Table<Ad>().Where(a => a.AdTitle.Contains(query) 
-                                                || a.CompanyName.Contains(query)
-                                                || a.AdSkills.Contains(query)).ToList();
-            return search;
+
+            List<Ad> matches = new List<Ad>();
+
+            query = query.ToUpper();
+            var ads = Db.Table<Ad>()?.ToList();
+
+            if (ads != null)
+            {
+                foreach (var ad in ads)
+                {
+                    var titleMatches = ad.AdTitle?.ToUpper()?.Contains(query) ?? false;
+                    var companyNameMatches = ad.CompanyName?.ToUpper()?.Contains(query) ?? false;
+                    var AdSkillsMatches = ad.AdSkills?.ToUpper()?.Contains(query) ?? false;
+
+                    if (titleMatches || companyNameMatches || AdSkillsMatches)
+                    {
+                        matches.Add(ad);
+                    }
+                }
+            }
+            return matches;
         }
 
         public static bool IsUserAlreadyRegistered(string userName)
