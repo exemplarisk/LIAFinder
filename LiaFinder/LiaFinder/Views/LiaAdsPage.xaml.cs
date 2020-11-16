@@ -45,12 +45,10 @@ namespace LiaFinder.Views
         }
 
         // Used in LiaAdsPage To search ads
-        private void AdSearcher_SearchButtonPressed(object sender, EventArgs e)
+        private void OnTextChanged(object sender, EventArgs e)
         {
-            var query = AdSearcher.Text;
-            var adResults = Database.SearchAd(query);
-
-            AdsListView.ItemsSource = adResults;
+            SearchBar searchBar = (SearchBar)sender;
+            AdsListView.ItemsSource = Database.SearchAd(searchBar.Text);
         }
     }
 }
