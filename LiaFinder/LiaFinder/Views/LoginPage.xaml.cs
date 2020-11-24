@@ -47,7 +47,7 @@ namespace LiaFinder.Views
 
                     if(user.isCompany)
                     {
-                           await Shell.Current.GoToAsync("homepage");
+                        await Shell.Current.GoToAsync("homepage");
                     }
 
                     else if(user.isAdmin)
@@ -57,7 +57,8 @@ namespace LiaFinder.Views
 
                     else
                     {
-                        await Shell.Current.GoToAsync("liapage");
+                    //Xamarin.Forms.Application.Current.MainPage = new AppShell();
+                    await Shell.Current.GoToAsync(nameof(LiaAdsPage));
                     } 
                 }
 

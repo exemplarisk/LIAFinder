@@ -91,6 +91,26 @@ namespace LiaFinder
             return matches;
         }
 
+        public static List<User> GetCurrentUserInformation(Guid id)
+        {
+            List<User> currentUser = new List<User>();
+            var users = Db.Table<User>()?.ToList();
+
+            if(users != null)
+            {
+                foreach(var user in users)
+                {
+                    var userMatches = user.UserId.Equals(id);
+
+                    if(userMatches)
+                    {
+                        currentUser.Add(user);
+                    }
+                }
+            }
+            return currentUser;
+        }
+
         public static bool IsUserAlreadyRegistered(string userName)
         {
             var isUserNameTaken = Db.Table<User>().Where(u => u.UserName.Equals(userName)).FirstOrDefault();
@@ -145,6 +165,13 @@ namespace LiaFinder
             var applications = Db.Table<Application>().Where(a => a.Company.Equals(companyName)).ToList();
 
             return Task.FromResult(applications);
+        }
+
+        public static Ad GetSpecificAd(string id)
+        {
+            var ad = Db.Table<Ad>().Where(u => u.Id.Equals(id)).FirstOrDefault();
+
+            return ad;
         }
 
         public static Task<List<Ad>> GetAds()

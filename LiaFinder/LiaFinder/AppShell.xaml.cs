@@ -8,14 +8,14 @@ namespace LiaFinder
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(LiaAdsDetailPage), typeof(LiaAdsDetailPage));
-            Routing.RegisterRoute("liadetails", typeof(LiaAdsDetailPage));
-            Routing.RegisterRoute("liapage", typeof(LiaAdsPage));
-            Routing.RegisterRoute("loginpage", typeof(LoginPage));
+            Routing.RegisterRoute(nameof(LiaAdsDetailPage), typeof(LiaAdsDetailPage));
+            Routing.RegisterRoute(nameof(LiaAdsPage), typeof(LiaAdsPage));
+            Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute("registrationpage", typeof(RegistrationPage));
             Routing.RegisterRoute("newadpage", typeof(NewAdPage));
             Routing.RegisterRoute("adminpage", typeof(AdminPage));
             Routing.RegisterRoute("homepage", typeof(HomePage));
-
         }
     }
 }

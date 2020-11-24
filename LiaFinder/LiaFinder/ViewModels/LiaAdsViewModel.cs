@@ -13,11 +13,13 @@ namespace LiaFinder.ViewModels
     class LiaAdsViewModel : BaseViewModel
     {
         private Ad _selectedAd;
-        
+        private User _user;
+
 
         public ObservableCollection<Ad> Ads { get; }
         public Command LoadAdsCommand { get; }
         public Command<Ad> AdTapped { get; }
+        public Command<User> LoadUserProfile { get; }
 
         public LiaAdsViewModel()
         {
@@ -26,6 +28,7 @@ namespace LiaFinder.ViewModels
             LoadAdsCommand = new Command(async () => await ExecuteLoadAdsCommand());
 
             AdTapped = new Command<Ad>(OnAdSelected);
+            LoadUserProfile = new Command<User>(LoadProfile);
 
         }
 
@@ -34,6 +37,17 @@ namespace LiaFinder.ViewModels
             await ExecuteLoadAdsCommand();
             IsBusy = true;
             SelectedAd = null;
+            User = null;
+        }
+
+        public User User
+        {
+            get => _user;
+            set
+            {
+                SetProperty(ref _user, value);
+                LoadProfile(value);
+            }
         }
 
         public Ad SelectedAd
@@ -65,6 +79,17 @@ namespace LiaFinder.ViewModels
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+
+        async void LoadProfile(User user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(ProfilePage)}?{nameof(ProfilePageViewModel.Id)}={user.UserId}");
         }
 
         async void OnAdSelected(Ad ad)

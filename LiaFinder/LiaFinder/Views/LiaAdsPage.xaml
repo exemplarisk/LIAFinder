@@ -5,74 +5,70 @@
              Title="LiaFinder"
              xmlns:local="clr-namespace:LiaFinder.ViewModels"
              xmlns:model="clr-namespace:LiaFinder.Models"
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseItemsPage"
+             Shell.TabBarBackgroundColor="Black"
+             Shell.TabBarIsVisible="True">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="Logout_Clicked"/>
-<<<<<<< HEAD
         <ToolbarItem IconImageSource="person.png" Clicked="ToolbarItem_Clicked"/>
-
-=======
->>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
+        <ToolbarItem IconImageSource="settings.png" Clicked='Settings_Clicked'/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
         <local:LiaAdsViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout>
-<<<<<<< HEAD
-        <SearchBar x:Name="AdSearcher" Placeholder="Search ads" TextChanged="OnTextChanged"/>
-=======
-        <SearchBar x:Name="AdSearcher" Placeholder="Search ads..." TextChanged="OnTextChanged" BackgroundColor="#4f4f4f" TextColor="White"/>
->>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
+    <StackLayout BackgroundColor="#272727">
+        <SearchBar x:Name="AdSearcher" Placeholder="Search ads" TextChanged="OnTextChanged" TextColor="White" PlaceholderColor="White" />
+
         <RefreshView x:DataType="local:LiaAdsViewModel" Command="{Binding LoadAdsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="AdsListView"
+            <CollectionView x:Name="AdsListView"
                 ItemsSource="{Binding Ads}"
                 SelectionMode="None" HeightRequest="10" BackgroundColor="#272727">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="8"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="8"
                       BackgroundColor="#272727">
 
-                        <Frame
+                            <Frame
                             HeightRequest="130"
                             Padding="0"
                             IsClippedToBounds="True"
                             BorderColor="#4f4f4f"
                             CornerRadius="5"
                             BackgroundColor="#4f4f4f">
-                            
-                            <StackLayout x:DataType="model:Ad"
+
+                                <StackLayout x:DataType="model:Ad"
                                      Margin="10,5,15,5" VerticalOptions="Center">
-                                <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding CompanyName}" FontSize="25" TextColor="White"/>
-                                    
-                                    <Image Source="ic_public_custom_48dp.png" HorizontalOptions="EndAndExpand"/>
-                                
-                                </StackLayout>
-                                <Label Text="{Binding AdTitle}" 
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding CompanyName}" FontSize="25" TextColor="White"/>
+
+                                        <Image Source="ic_public_custom_48dp.png" HorizontalOptions="EndAndExpand"/>
+
+                                    </StackLayout>
+                                    <Label Text="{Binding AdTitle}" 
                             LineBreakMode="NoWrap"  
                             FontSize="Medium" TextColor="White"/>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding AdSkills}" HorizontalOptions="Start" TextColor="White" FontSize="12" Opacity="30"/>
-                                    <Image Source="person.png" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="{Binding CompanyInternSpots}" HorizontalOptions="End" TextColor="White" FontSize="12"/>
-                                </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding AdSkills}" HorizontalOptions="Start" TextColor="White" FontSize="12" Opacity="30"/>
+                                        <Image Source="person.png" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding CompanyInternSpots}" HorizontalOptions="End" TextColor="White" FontSize="12"/>
+                                    </StackLayout>
 
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
                                         NumberOfTapsRequired="1"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:LiaAdsViewModel}}, Path=AdTapped}"		
                                 CommandParameter="{Binding .}"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </StackLayout>
 </ContentPage>

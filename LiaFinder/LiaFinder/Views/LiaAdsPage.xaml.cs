@@ -33,7 +33,7 @@ namespace LiaFinder.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.GoToAsync(nameof(LoginPage));
                 });
             }
 
@@ -51,7 +51,6 @@ namespace LiaFinder.Views
         {
             SearchBar searchBar = (SearchBar)sender;
             AdsListView.ItemsSource = Database.SearchAd(searchBar.Text);
-<<<<<<< HEAD
         }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -62,8 +61,14 @@ namespace LiaFinder.Views
             }
             else
                 AdSearcher.IsVisible = true;
-=======
->>>>>>> deb5a2cabd320ea8f8816931d20ea74b96379197
+        }
+
+        private void Settings_Clicked(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync(nameof(ProfilePage));
+            });
         }
     }
 }

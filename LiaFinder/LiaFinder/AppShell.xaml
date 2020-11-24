@@ -2,11 +2,33 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:LiaFinder.Views"
-       Title="LiaFinder"
+       xmlns:views="clr-namespace:LiaFinder.Views"
        x:Class="LiaFinder.AppShell"
-       BackgroundColor="#000000">
+       BackgroundColor="Black"
+       ForegroundColor="White"
+       UnselectedColor="White"
+       FlyoutBehavior="Disabled">
 
-    <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
 
+<!--For some reason this disables the tabbar when you login. I don't know how else
+     to set the loginpage as start up when the app fires up, needs to be investigated-->
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+    
+    <TabBar Route="main">
+        <Tab Title="Ads" Icon="ic_computer_custom_18dp.png">
+            <ShellContent ContentTemplate="{DataTemplate local:LiaAdsPage}" />
+        </Tab>
+        <Tab Title="Profile" Icon="person.png">
+            <ShellContent ContentTemplate="{DataTemplate local:LiaAdsDetailPage}" />
+        </Tab>
+        <Tab Title="Search" Icon="person.png">
+            <ShellContent ContentTemplate="{DataTemplate local:LiaAdsPage}" />
+        </Tab>
+    </TabBar>
 
+    
+
+    <!--<ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />-->
 </Shell>

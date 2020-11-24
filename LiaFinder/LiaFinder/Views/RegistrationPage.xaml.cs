@@ -3,6 +3,7 @@ using System.IO;
 using Xamarin.Forms;
 using SQLite;
 using LiaFinder.Models;
+using System.Text.RegularExpressions;
 
 namespace LiaFinder.Views
 {
@@ -20,16 +21,19 @@ namespace LiaFinder.Views
                 UserName = EntryUserName.Text,
                 Password = EntryUserPassword.Text,
                 Email = EntryUserEmail.Text,
+                PhoneNumber = EntryUserPhone.Text,
                 isCompany = CompanyCheckBox.IsChecked,
                 isAdmin = false,
             };
 
+            var isPhoneNumberValid = Regex.IsMatch(EntryUserPhone.Text, @"[a-zA-Z]");
             var userName = user.UserName;
             var isUserNameTaken = Database.IsUserAlreadyRegistered(userName);
 
             if (user.Email == null || 
                 user.Password == null || 
-                user.UserName == null)
+                user.UserName == null || 
+                user.PhoneNumber == null)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -44,6 +48,15 @@ namespace LiaFinder.Views
                         "please try another username", "Ok");
                 });
             }
+            else if(isPhoneNumberValid)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Sorry, Can't do that", "Phone number can't contain letters..., " +
+                        "please try again", "Ok");
+                });
+
+            }
 
             else
             {
@@ -55,7 +68,7 @@ namespace LiaFinder.Views
 
                     if (result)
                     {
-                        await Shell.Current.GoToAsync("loginpage");
+                        await Shell.Current.GoToAsync(nameof(LoginPage));
                     }
                 });
             }

@@ -125,11 +125,7 @@ namespace LiaFinder.ViewModels
         {
             try
             {
-                // TODO: Should change this aswell
-                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "student.db3");
-                var db = new SQLiteConnection(dbpath);
-
-                var ad = db.Table<Ad>().Where(u => u.Id.Equals(id)).FirstOrDefault();
+                var ad = Database.GetSpecificAd(id);
 
                 if (ad != null)
                 {
