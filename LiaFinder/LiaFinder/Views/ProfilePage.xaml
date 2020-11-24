@@ -54,7 +54,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="GitHub:  " FontAttributes="Bold" TextColor="White"/>
-                                <Span Text="github.com/zphinxify" TextColor="#a5a2a2"/>
+                                <Span Text="{Binding GitHub}" TextColor="#a5a2a2"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -62,13 +62,13 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="LinkedIn:  " FontAttributes="Bold" TextColor="White"/>
-                                <Span Text="linkedin.com/BenjaminBenTaleb" TextColor="#a5a2a2"/>
+                                <Span Text="{Binding LinkedIn}" TextColor="#a5a2a2"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                 </Grid>
             </Frame>
-                <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Black" BackgroundColor="#F9AA33" Text="Edit" Margin="0,0,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45" VerticalOptions="End"/>
+                <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" TextColor="Black" BackgroundColor="#F9AA33" Text="Edit" Margin="0,0,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45" VerticalOptions="End" Clicked="Edit_Button_Clicked"/>
         </StackLayout>
     </Grid>
 </ContentPage>

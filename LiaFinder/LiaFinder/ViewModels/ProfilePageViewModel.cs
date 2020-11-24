@@ -17,6 +17,9 @@ namespace LiaFinder.ViewModels
         private string _email;
         private string _username;
         private string _phonenumber;
+        private string _github;
+        private string _linkedin;
+
 
         public ObservableCollection<User> UserInformation { get; }
 
@@ -54,6 +57,18 @@ namespace LiaFinder.ViewModels
             set => SetProperty(ref _phonenumber, value);
         }
 
+        public string GitHub
+        {
+            get => _github;
+            set => SetProperty(ref _github, value);
+        }
+
+        public string LinkedIn
+        {
+            get => _linkedin;
+            set => SetProperty(ref _linkedin, value);
+        }
+
         public void OnAppearing()
         {
             try
@@ -65,6 +80,8 @@ namespace LiaFinder.ViewModels
                     Email = user.Email;
                     UserName = user.UserName;
                     PhoneNumber = user.PhoneNumber;
+                    GitHub = user.GitHubLink;
+                    LinkedIn = user.LinkedInLink;
                 }
             }
             catch (Exception ex)

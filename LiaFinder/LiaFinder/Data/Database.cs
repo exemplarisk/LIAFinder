@@ -56,6 +56,7 @@ namespace LiaFinder
             Db.Update(user);
         }
 
+
         public static User GetCurrentUser(Guid id)
         {
             return Db.Table<User>().Where(u => u.UserId.Equals(id)).FirstOrDefault();

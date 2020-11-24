@@ -24,5 +24,10 @@ namespace LiaFinder.Views
         {
             _viewModel.OnAppearing();
         }
+
+        private async void Edit_Button_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(EditProfilePage));
+        }
     }
 }

@@ -11,6 +11,10 @@
                 <Setter Property="BackgroundColor" Value="#4f4f4f" />
 
             </Style>
+
+            <Style x:Key="userInfoEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
